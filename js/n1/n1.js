@@ -64,16 +64,49 @@ var StructuresListView = Backbone.View.extend({
     }
   }
 })
+/*
+// View class for entering initial matrix size
+var StructuresInitialView = Backbone.View.extend({
+  el: '#n1-app',
+
+  initialize: function () {
+    this.listenTo(this.collection, 'sync', this.render)
+  },
+
+  render: function () {
+    this.collection.each(function (model) {
+      var item = new StructuresInputView({model: model})
+      item.render().$el
+    }, this)
+
+    return this
+  },
+
+  events: {
+    'click .create': 'onCreate'
+  },
+
+  onCreate: function () {
+    var $size = this.$('#matrix-size')
+
+    if ($size.val()) {
+      this.collection.create({
+        size: $size.val()
+      })
+
+      $size.val('')
+      this.$('#structure-create').hide()
+    }
+  }
+})
+*/
 
 // View class for displaying structure input items
 var StructuresInputView = Backbone.View.extend({
   el: '#n1-app',
   template: _.template($('#structure-input-tmpl').html()),
-
   initialize: function () {
     this.listenTo(this.model, 'destroy', this.remove)
-    //this.listenTo(this.collection, 'sync', this.render)
-    // this.listenTo(this.model, 'destroy', this.remove)
     console.log('Starting here...')
   },
 
@@ -83,10 +116,9 @@ var StructuresInputView = Backbone.View.extend({
     console.log('Rendering here...')
     return this
   }
-
 })
 
 // Create a new list collection, a list view, and then fetch list data:
 var structuresList = new N1.Collections.StructureList()
-var structuresView = new StructuresListView({collection: structuresList})
+var structuresView = new N1.Views.StructuresInitialView({collection: structuresList})
 structuresList.fetch()
