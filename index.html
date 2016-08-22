@@ -9,7 +9,7 @@
 <body>
 
 <div id="n1-app">
-  <ul class="structure-list"></ul>
+  <ul class="structure-list"></ul> 
 
   <div id='structure-create' class="structure-create">
     <b>Enter Inital Matrix Size</b><br />
@@ -19,7 +19,13 @@
 </div>
 
 <script type="text/template" id="structure-item-tmpl">
-  <p><a href="/muppets/<%= id %>"><%= size %></a></p>
+  <p><a href="/structures/<%= id %>"><%= size %></a></p>
+  <button class="remove">x</button>
+</script>
+
+<script type="text/template" id="structure-input-tmpl">
+  <h1>General Modeling Grid </h1>
+  <p><a href="/structures/<%= id %>"><%= size %></a></p>
   <button class="remove">x</button>
 </script>
 
