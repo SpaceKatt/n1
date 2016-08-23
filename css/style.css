@@ -46,3 +46,43 @@ body {
 	//height:450px;
   height:auto;
 }
+
+#canvas-main {
+    border: 2px solid black;
+    background-color: lightgrey;
+}
+
+#canvas-bottom {
+    border: 2px solid black;
+    background-color: lightgrey;
+
+}
+
+#canvas-left-side {
+	border: 2px solid black;
+    background-color: lightgrey;
+    margin-left: 5px;
+    top: 60px;
+}
+
+#rightList {
+	float:left;
+	width: 35px;
+	height:450px;
+
+}
+
+#display {
+	float:left;
+	width: 430px;
+	height:450px;
+	background-color: lightgrey;
+}
+
+#input {
+	float:right;
+	width:368px;
+	height:450px;
+	margin:auto;
+	background-color: lightgrey;
+}

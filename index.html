@@ -23,24 +23,34 @@
   <button class="remove">x</button>
 </script>
 
-<script type="text/template" id="structure-input-tmpl">
+<script type='text/template' id='structure-input-tmpl'>
   <h1>General Modeling Grid </h1>
-  <p><a href="/structures/<%= id %>"><%= size %></a></p>
-  <button class="remove">x</button>
+  <p>Initial Matrix Size Is: <%= size %></p>
+  <label>Enter Column Number: <input id='column-number' type='text'></label>
+  <label>Enter Row Number: <input id='row-number' type='text'></label>
+  <button class='enter-data'>Enter Data</button>
+  <div id='display'>
+  <div id='rightList'>
+    <canvas id='canvas-left-side' width='20' height='380'></canvas>
+  </div>
+    <canvas id='canvas-main' width='380' height='380'></canvas>
+    <canvas id='canvas-bottom' width='380' height='20'></canvas>
+</div>
+
 </script>
 
 <!-- External scripts -->
 
-<script src="js/lib/jquery.js"></script>
-<script src="js/lib/underscore.js"></script>
-<script src="js/lib/backbone.js"></script>
-<script src="js/lib/backbone.localStorage.js"></script>
-<script src="js/n1/namespace.js"></script>
-<script src="js/n1/config.js"></script>
-<script src="js/n1/models/structure.js"></script>
-<script src="js/n1/collections/structureList.js"></script>
-<script src="js/n1/views/structuresInitialView.js"></script>
-<script src="js/n1/views/structuresInputView.js"></script>
+<script src='js/lib/jquery.js'></script>
+<script src='js/lib/underscore.js'></script>
+<script src='js/lib/backbone.js'></script>
+<script src='js/lib/backbone.localStorage.js'></script>
+<script src='js/n1/namespace.js'></script>
+<script src='js/n1/config.js'></script>
+<script src='js/n1/models/structure.js'></script>
+<script src='js/n1/collections/structureList.js'></script>
+<script src='js/n1/views/structuresInitialView.js'></script>
+<script src='js/n1/views/structuresInputView.js'></script>
 
 
 
