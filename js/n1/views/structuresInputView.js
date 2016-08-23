@@ -9,7 +9,7 @@
     initialize: function () {
       // may need to create new model using data from old model
       console.log('Input start ...')
-      //this.listenTo(this.model, 'destroy', this.remove)
+      // this.listenTo(this.model, 'destroy', this.remove)
      N1.MathLib.GridTools.initHandler()
       console.log('Starting here...')
     },
@@ -24,8 +24,7 @@
       var context1 = canvas1.getContext('2d')
       var canvas2 = $('#canvas-bottom').get(0)
       var context2 = canvas2.getContext('2d')
-      // N1.MathLib.gridText = new N1.MathLib.BinaryMatrix.zero(19)
-
+      N1.MathLib.GridTools.initGrid(canvas, context, canvas1, context1, canvas2, context2, n1.gridText, n1.vNames)
       return this
     }
   })

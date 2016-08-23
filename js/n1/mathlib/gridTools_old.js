@@ -1,6 +1,26 @@
 /* global N1 */
-(function () {
 'use strict'
+/*
+ * Copyright (c) 2013, 2014, 2015, 2016 Joseph J. Simpson
+ * This file is part of a web program, this program will have multiple versions.
+ * This file in the web program is free software: you can redistribute ist and/or modify
+ * it under the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later version.
+ *
+ * The bsmp_wa_1 program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with bsmp_wa_1.
+ * If not, see <http://www.gnu.org/licenses/>
+ */
+
+ // Add javascript code here to draw the BSMP Grid
+ // and add the initial color scheme..
+
+N1.MathLib.gridText = null
+N1.MathLib.gridColor = null
+N1.MathLib.vNames = null
 /*
 window.onload = function () {
   document.getElementById('one').value = 'N'
@@ -13,25 +33,23 @@ window.onload = function () {
 } */
  // initialize the window with a blank canvas
  // and data input area..
-// N1.MathLib.BinaryMatrix.one = function(size) {
-// function initHandler () {
-N1.MathLib.GridTools.initHandler = function initHandler () {
-  // var canvas = document.getElementById('canvas-main')
-  // var context = canvas.getContext('2d')
-  // var canvas1 = document.getElementById('canvas-left-side')
-  // var context1 = canvas1.getContext('2d')
-  // var canvas2 = document.getElementById('canvas-bottom')
-  // var context2 = canvas2.getContext('2d')
+//N1.MathLib.BinaryMatrix.one = function(size) {
+//function initHandler () {
+N1.MathLib.GridTools.initHandler = function () {
+  var canvas = document.getElementById('canvas-main')
+  var context = canvas.getContext('2d')
+  var canvas1 = document.getElementById('canvas-left-side')
+  var context1 = canvas1.getContext('2d')
+  var canvas2 = document.getElementById('canvas-bottom')
+  var context2 = canvas2.getContext('2d')
 
   // N1.MathLib.gridText = BSMP.MatrixBin.O(19)
-  // N1.MathLib.gridText = N1.MathLib.BinaryMatrix.zero(19)
-  n1.gridText = new N1.MathLib.BinaryMatrix.zero(19)
+  N1.MathLib.gridText = N1.MathLib.BinaryMatrix.zero(19)
   // N1.MathLib.gridColor = BSMP.MatrixBin.O(19)
-  n1.gridColor = new N1.MathLib.BinaryMatrix.zero(19)
-  n1.vNames = new N1.MathLib.BinaryVector.newOne([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
-
-/*
-   N1.MathLib.GridTools.initGrid(canvas, context, canvas1, context1, canvas2, context2,  n1.gridText, n1.vNames)
+  N1.MathLib.gridColor = N1.MathLib.BinaryMatrix.zero(19)
+  N1.MathLib.vNames = N1.MathLib.BinaryVector.newOne([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+  /*
+  initGrid(canvas, context, canvas1, context1, canvas2, context2, N1.MathLib.gridText, N1.MathLib.vNames)
 
   document.getElementById('one').value = 'N'
   document.getElementById('two').value = 'N'
@@ -53,7 +71,7 @@ N1.MathLib.GridTools.initHandler = function initHandler () {
 // #####
 // ################################################################################################
 // ################################################################################################
-// N1.MathLib.GridTools.initHandler = function initHandler () {
+
 function drawYellowCell (x, y, canvas, context, cellSize) {
   var x1 = x
   var y1 = y
@@ -62,7 +80,7 @@ function drawYellowCell (x, y, canvas, context, cellSize) {
 }
 
 function enterYellowColor (x, y) {
-  n1.gridColor.setElement(x + 1, y + 1, 1)
+  N1.MathLib.gridColor.setE(x + 1, y + 1, 1)
 }
 
 function drawXGridCell (x, canvas1, context1, cellSize, vNames) {
@@ -71,7 +89,7 @@ function drawXGridCell (x, canvas1, context1, cellSize, vNames) {
   context1.fillRect((x - 1) * cellSize, 0, cellSize - 1, cellSize - 1)
   context1.fillStyle = 'black'
   context1.font = '1em tahoma'
-  text = n1.vNames.element(x)
+  text = N1.MathLib.vNames.e(x)
   if (x < 10) {
     context1.fillText(text, (x * cellSize) - 20, 15)
   }
@@ -86,7 +104,7 @@ function drawYGridCell (y, canvas2, context2, cellSize, vNames) {
   context2.fillRect(0, (y - 1) * cellSize, cellSize - 1, cellSize - 1)
   context2.fillStyle = 'black'
   context2.font = '1em tahoma'
-  text = n1.vNames.element(y)
+  text = N1.MathLib.vNames.e(y)
   context2.fillText(text, 0, (y * cellSize) - 5)
 }
 
@@ -96,7 +114,7 @@ function drawRedCell (x, y, canvas, context, cellSize) {
 }
 
 function enterRedColor (x, y) {
-  n1.gridColor.setElement(x + 1, y + 1, 2)
+  N1.MathLib.gridColor.setE(x + 1, y + 1, 2)
 }
 
 function drawGreenCell (x, y, canvas, context, cellSize) {
@@ -123,7 +141,7 @@ function drawOrangeCell (x, y, canvas, context, cellSize) {
 }
 
 function enterOrangeColor (x, y) {
-  n1.gridColor.setE(x + 1, y + 1, 5)
+  N1.MathLib.gridColor.setE(x + 1, y + 1, 5)
 }
 
 function drawText (x, y, canvas, context, cellSize, gridText) {
@@ -131,7 +149,7 @@ function drawText (x, y, canvas, context, cellSize, gridText) {
   context.fillStyle = 'black'
   context.font = '1em tahoma'
   context.textAlign = 'center'
-  text = n1.gridText.getElement(x + 1, y + 1)
+  text = N1.MathLib.gridText.e(x + 1, y + 1)
   context.fillText(text, (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
 }
 
@@ -147,8 +165,7 @@ function drawText0 (x, y, canvas, context, cellSize) {
   context.textAlign = 'center'
   context.fillText('0', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
 }
-// N1.MathLib.GridTools.initHandler = function initHandler () {
-N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1, canvas2, context2) {
+	function initGrid (canvas, context, canvas1, context1, canvas2, context2) {
   var x
   var y
   var cellSize = 20 // should be in global function
@@ -159,19 +176,19 @@ N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, con
   context2.fillStyle = 'black'
   context2.fillRect(0, 0, canvas2.width, canvas2.height)
   for (x = 0; x < 19; x++) {
-    drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
+    drawXGridCell(x + 1, canvas1, context1, cellSize, N1.MathLib.vNames)
 
     for (y = 0; y < 19; y++) {
       if (x !== y) {
         drawYellowCell(x, y, canvas, context, cellSize)
         enterYellowColor(x, y)
-        drawYGridCell(y + 1, canvas2, context2, cellSize, n1.vNames)
+        drawYGridCell(y + 1, canvas2, context2, cellSize, N1.MathLib.vNames)
       }
       if (x === y) {
         drawRedCell(x, y, canvas, context, cellSize)
         enterRedColor(x, y)
       }
-      drawText(x, y, canvas, context, cellSize, n1.gridText)
+      drawText(x, y, canvas, context, cellSize, N1.MathLib.gridText)
     }
   }
 }
@@ -606,4 +623,3 @@ function scanUpperForOnes () {
   }
   return sum
 }
-}());

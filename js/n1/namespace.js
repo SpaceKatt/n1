@@ -23,6 +23,7 @@ N1.Routers || (N1.Routers = {})
 N1.Views || (N1.Views = {})
 N1.Templates || (N1.Templates = {})
 N1.MathLib || (N1.MathLib = {})
+N1.MathLib.GridTools || (N1.MathLib.GridTools = {})
 
 // Application instance.
 var n1 = n1 || {}

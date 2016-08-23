@@ -119,6 +119,6 @@ var StructuresInputView = Backbone.View.extend({
 })
 
 // Create a new list collection, a list view, and then fetch list data:
-var structuresList = new N1.Collections.StructureList()
-var structuresView = new N1.Views.StructuresInitialView({collection: structuresList})
-structuresList.fetch()
+n1.structuresList = new N1.Collections.StructureList()
+n1.structuresView = new N1.Views.StructuresInitialView({collection: n1.structuresList})
+n1.structuresList.fetch()
