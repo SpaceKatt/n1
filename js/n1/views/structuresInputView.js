@@ -20,10 +20,10 @@
       console.log('Rendering here...')
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
-      var canvas1 = $('#canvas-left-side').get(0)
-      var context1 = canvas1.getContext('2d')
-      var canvas2 = $('#canvas-bottom').get(0)
+      var canvas2 = $('#canvas-left-side').get(0)
       var context2 = canvas2.getContext('2d')
+      var canvas1 = $('#canvas-bottom').get(0)
+      var context1 = canvas1.getContext('2d')
       N1.MathLib.GridTools.initGrid(canvas, context, canvas1, context1, canvas2, context2, n1.gridText, n1.vNames)
       return this
     }

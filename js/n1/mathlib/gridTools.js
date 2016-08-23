@@ -76,7 +76,7 @@ function drawXGridCell (x, canvas1, context1, cellSize, vNames) {
     context1.fillText(text, (x * cellSize) - 20, 15)
   }
   if (x >= 10) {
-    context1.fillText(text, (x * cellSize) - 20, 15)
+    context1.fillText(text, (x * cellSize) - 22, 15) // chagned 20 to 22
   }
 }
 
@@ -105,7 +105,7 @@ function drawGreenCell (x, y, canvas, context, cellSize) {
 }
 
 function enterGreenColor (x, y) {
-  N1.MathLib.gridColor.setE(x + 1, y + 1, 3)
+  n1.gridColor.setElement(x + 1, y + 1, 3)
 }
 
 function drawLightBlueCell (x, y, canvas, context, cellSize) {
@@ -114,7 +114,7 @@ function drawLightBlueCell (x, y, canvas, context, cellSize) {
 }
 
 function enterLightBlueColor (x, y) {
-  N1.MathLib.gridColor.setE(x + 1, y + 1, 4)
+  n1.gridColor.setElement(x + 1, y + 1, 4)
 }
 
 function drawOrangeCell (x, y, canvas, context, cellSize) {
@@ -159,7 +159,7 @@ N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, con
   context2.fillStyle = 'black'
   context2.fillRect(0, 0, canvas2.width, canvas2.height)
   for (x = 0; x < 19; x++) {
-    drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
+  drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
 
     for (y = 0; y < 19; y++) {
       if (x !== y) {
