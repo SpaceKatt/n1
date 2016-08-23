@@ -348,7 +348,7 @@ N1.MathLib.BinaryMatrix.one = function(size) {
   var bm = new N1.MathLib.BinaryMatrix();
   return bm.setElements(elements);
 },
-N1.MathLib.BinaryMatrix.zero = function(size) {
+N1.MathLib.BinaryMatrix.zero = function (size) {
   var elements = [];
   var rowIndex;
   var columnIndex;

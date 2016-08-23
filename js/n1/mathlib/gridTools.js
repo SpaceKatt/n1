@@ -21,7 +21,7 @@
 N1.MathLib.gridText = null
 N1.MathLib.gridColor = null
 N1.MathLib.vNames = null
-
+/*
 window.onload = function () {
   document.getElementById('one').value = 'N'
   document.getElementById('two').value = 'N'
@@ -30,16 +30,17 @@ window.onload = function () {
   document.getElementById('moveData').style.display = 'none'
   var initButton = document.getElementById('initButton')
   initButton.onclick = initHandler
-}
+} */
  // initialize the window with a blank canvas
  // and data input area..
-
-function initHandler () {
-  var canvas = document.getElementById('BSMP_1')
+//N1.MathLib.BinaryMatrix.one = function(size) {
+//function initHandler () {
+N1.MathLib.GridTools.initHandler = function initHandler () {
+  var canvas = document.getElementById('canvas-main')
   var context = canvas.getContext('2d')
-  var canvas1 = document.getElementById('BSMP_2')
+  var canvas1 = document.getElementById('canvas-left-side')
   var context1 = canvas1.getContext('2d')
-  var canvas2 = document.getElementById('BSMP_3')
+  var canvas2 = document.getElementById('canvas-bottom')
   var context2 = canvas2.getContext('2d')
 
   // N1.MathLib.gridText = BSMP.MatrixBin.O(19)
@@ -47,7 +48,7 @@ function initHandler () {
   // N1.MathLib.gridColor = BSMP.MatrixBin.O(19)
   N1.MathLib.gridColor = N1.MathLib.BinaryMatrix.zero(19)
   N1.MathLib.vNames = N1.MathLib.BinaryVector.newOne([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
-
+  /*
   initGrid(canvas, context, canvas1, context1, canvas2, context2, N1.MathLib.gridText, N1.MathLib.vNames)
 
   document.getElementById('one').value = 'N'
@@ -60,7 +61,7 @@ function initHandler () {
 
   function writeToDocOne (message) {
     document.getElementById('test_out').innerHTML = message
-  }
+  } */
 }
 
 // ################################################################################################
