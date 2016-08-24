@@ -42,13 +42,13 @@
     }
   }
 
-  N1.MathLib.BinaryVector.newOne = function (elements) {
+  N1.MathLib.BinaryVector.NewOne = function (elements) {
     var bv = new N1.MathLib.BinaryVector()
 
     return bv.setElements(elements)
   }
 
-  N1.MathLib.BinaryVector.zero = function (size) {
+  N1.MathLib.BinaryVector.Zero = function (size) {
     var elements = []
     var index
     for (index = 0; index < size; index++) {
@@ -59,7 +59,7 @@
     return bv.setElements(elements)
   }
 
-  N1.MathLib.BinaryVector.one = function (size) {
+  N1.MathLib.BinaryVector.One = function (size) {
     var elements = []
     var index
     for (index = 0; index < size; index++) {

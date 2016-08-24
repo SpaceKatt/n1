@@ -329,13 +329,13 @@ this.matrixView = function() {
 
 },
 
-N1.MathLib.BinaryMatrix.newOne = function(elements) {
+N1.MathLib.BinaryMatrix.NewOne = function(elements) {
   var bm = new N1.MathLib.BinaryMatrix();
 
   return bm.setElements(elements);
 },
 
-N1.MathLib.BinaryMatrix.one = function(size) {
+N1.MathLib.BinaryMatrix.One = function(size) {
   var elements = [];
   var rowIndex;
   var columnIndex;
@@ -348,7 +348,7 @@ N1.MathLib.BinaryMatrix.one = function(size) {
   var bm = new N1.MathLib.BinaryMatrix();
   return bm.setElements(elements);
 },
-N1.MathLib.BinaryMatrix.zero = function (size) {
+N1.MathLib.BinaryMatrix.Zero = function (size) {
   var elements = [];
   var rowIndex;
   var columnIndex;
@@ -362,7 +362,7 @@ N1.MathLib.BinaryMatrix.zero = function (size) {
   return bm.setElements(elements);
 },
 
-N1.MathLib.BinaryMatrix.id = function(size) {
+N1.MathLib.BinaryMatrix.Id = function(size) {
   var elements = [];
   var rowIndex;
   var columnIndex;

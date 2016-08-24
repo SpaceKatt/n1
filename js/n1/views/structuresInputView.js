@@ -10,7 +10,7 @@
       // may need to create new model using data from old model
       console.log('Input start ...')
       // this.listenTo(this.model, 'destroy', this.remove)
-     N1.MathLib.GridTools.initHandler()
+      N1.MathLib.GridTools.initHandler()
       console.log('Starting here...')
     },
 
