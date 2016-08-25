@@ -109,7 +109,7 @@
     context.textAlign = 'center'
     context.fillText('0', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
   }
-// N1.MathLib.GridTools.initHandler = function initHandler () {
+
   N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1, canvas2, context2) {
     var x
     var y

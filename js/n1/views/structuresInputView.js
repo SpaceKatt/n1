@@ -1,4 +1,4 @@
-/* global Backbone, $, _, N1 */
+/* global Backbone, $, _, N1, n1 */
 (function () {
   'use strict'
 
@@ -24,7 +24,9 @@
       var context2 = canvas2.getContext('2d')
       var canvas1 = $('#canvas-bottom').get(0)
       var context1 = canvas1.getContext('2d')
-      N1.MathLib.GridTools.initGrid(canvas, context, canvas1, context1, canvas2, context2, n1.gridText, n1.vNames)
+      N1.MathLib.GridTools.initGrid(
+        canvas, context, canvas1, context1, canvas2, context2, n1.gridText,
+         n1.vNames)
       return this
     }
   })
