@@ -4,6 +4,7 @@
   // Stucture Model
   // ----------
   var globalCounterId = 1;
+
   N1.Models.Structure = Backbone.Model.extend({
     initialize: function () {
         this.set('id', globalCounterId);
