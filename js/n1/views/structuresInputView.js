@@ -44,15 +44,14 @@
       var model = n1.structuresList.at(0)
       var size = model.get('size')
       alert('model is:' + model)
-      /*
-      if ($size.val()) {
-        this.collection.create({
-          size: $size.val()
-        })
 
-        $size.val('')
-        this.$('#structure-create').hide()
-      } */
+      var canvas = $('#canvas-main').get(0)
+      var context = canvas.getContext('2d')
+      var cellSize = 20
+      var rcOne = n1.columnNumber
+      var rcTwo = n1.rowNumber
+      N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
+
       alert('size is:' + size)
     }
 

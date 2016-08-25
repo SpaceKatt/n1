@@ -18,9 +18,9 @@
  // Add javascript code here to draw the BSMP Grid
  // and add the initial color scheme..
 
-N1.MathLib.gridText = null
-N1.MathLib.gridColor = null
-N1.MathLib.vNames = null
+//n1.gridText = null
+// n1..gridColor = null
+// n1.vNames = null
 /*
 window.onload = function () {
   document.getElementById('one').value = 'N'

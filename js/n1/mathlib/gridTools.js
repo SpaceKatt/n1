@@ -143,12 +143,13 @@
   //    Functions to enter data into the 19 by 19 grid
   // ##########################################################################
   // ##########################################################################
-  function enterData () {
-    var rcOne = document.getElementById('one').value
-    var rcTwo = document.getElementById('two').value
-    var canvas = document.getElementById('BSMP_1')
-    var context = canvas.getContext('2d')
-    var cellSize = 20
+  //N1.MathLib.GridTools.initGrid =	function initGrid
+  N1.MathLib.GridTools.enterData = function enterData (rcOne, rcTwo, canvas, context, cellSize) {
+    // var rcOne = document.getElementById('one').value
+    // var rcTwo = document.getElementById('two').value
+    // var canvas = document.getElementById('BSMP_1')
+    // var context = canvas.getContext('2d')
+    // var cellSize = 20
     var color = 0
     var rcOneIndex
     var rcTwoIndex
@@ -173,7 +174,7 @@
       // use the gridColor matrix
       for (ex = 0; ex < 19; ex++) { // reduce to 0 and <
         for (ey = 0; ey < 19; ey++) { // reduce to 0 and <
-          color = n1.gridColor.e(ex + 1, ey + 1) // take out the + 1
+          color = n1.gridColor.getElement(ex + 1, ey + 1) // take out the + 1
           switch (color) {
             case 1:
               drawYellowCell(ex, ey, canvas, context, cellSize)
