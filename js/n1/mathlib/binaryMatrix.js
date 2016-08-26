@@ -162,7 +162,7 @@
   },
 
   this.duplicateMatrix = function() {
-    var newOne = N1.MathLib.BinaryMatrix.newOne(this.elements);
+    var newOne = N1.MathLib.BinaryMatrix.NewOne(this.elements);
     return newOne;
   },
 

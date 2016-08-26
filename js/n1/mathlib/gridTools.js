@@ -255,11 +255,11 @@
     // ############## draw code here ########
     // need to redraw the main canvas using text values
     for (ix = 0; ix < 19; ix++) {
-      drawXGridCell(ix + 1, canvas1, context1, cellSize, N1.MathLib.vNames) // added +1
+      drawXGridCell(ix + 1, canvas1, context1, cellSize, n1.vNames) // added +1
       for (iy = 0; iy < 19; iy++) {
         var color
-        drawYGridCell(iy + 1, canvas2, context2, cellSize, N1.MathLib.vNames) // added +1
-        color = N1.MathLib.gridColor.e(ix + 1, iy + 1)
+        drawYGridCell(iy + 1, canvas2, context2, cellSize, n1.vNames) // added +1
+        color = n1.gridColor.getElement(ix + 1, iy + 1)
         switch (color) {
           case 1:
             drawYellowCell(ix, iy, canvas, context, cellSize)
@@ -302,8 +302,8 @@
     rmTwo = matrixIn.dup()
     rmOut1 = rmOne.boolMultiply(rmTwo)
     rmOut2 = rmOut1.boolMultiply(rmTwo)
-    tempGridColor = N1.MathLib.gridColor.dup()
-    tempGridText = N1.MathLib.gridText.dup()
+    tempGridColor = n1.gridColor.dup()
+    tempGridText = n1.gridText.dup()
     // start a loop to calculate the reachability matrix
     while ((!done) && (loopFlag > 0)) {
       rmDiff1 = rmOut2.subtract(rmOut1)
@@ -404,10 +404,10 @@
     // use the gridColor matrix
     for (mx = 0; mx < 19; mx++) {
       var color
-      drawXGridCell(mx + 1, canvas1, context1, cellSize, N1.MathLib.vNames) // added +1
+      drawXGridCell(mx + 1, canvas1, context1, cellSize, n1.vNames) // added +1
       for (my = 0; my < 19; my++) {
-        drawYGridCell(my + 1, canvas2, context2, cellSize, N1.MathLib.vNames) // added +1
-        color = N1.MathLib.gridColor.e(mx + 1, my + 1)
+        drawYGridCell(my + 1, canvas2, context2, cellSize, n1.vNames) // added +1
+        color = n1.gridColor.getElement(mx + 1, my + 1)
         switch (color) {
           case 1:
             drawYellowCell(mx, my, canvas, context, cellSize)
@@ -423,7 +423,7 @@
             drawLightBlueCell(mx, my, canvas, context, cellSize)
             break
         }
-        drawText(mx, my, canvas, context, cellSize, N1.MathLib.gridText)
+        drawText(mx, my, canvas, context, cellSize, n1.gridText)
       }
     }
     // ############# draw code end ###########
@@ -436,16 +436,17 @@
   //   based on the approach in moveRC()
   // ##########################################################################
   // ##########################################################################
-  function swapRC () {
-    var cellSize = 20 // should be in global function variable
-    var rcOne = document.getElementById('one').value
-    var rcTwo = document.getElementById('two').value
-    var canvas = document.getElementById('canvas-main')
-    var context = canvas.getContext('2d')
-    var canvas1 = document.getElementById('canvas-left-side')
-    var context1 = canvas1.getContext('2d')
-    var canvas2 = document.getElementById('canvas-bottom')
-    var context2 = canvas2.getContext('2d')
+  // N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1,  canvas2, context2)
+  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
+    // var cellSize = 20 // should be in global function variable
+    // var rcOne = document.getElementById('one').value
+    // var rcTwo = document.getElementById('two').value
+    // var canvas = document.getElementById('canvas-main')
+    // var context = canvas.getContext('2d')
+    // var canvas1 = document.getElementById('canvas-left-side')
+    // var context1 = canvas1.getContext('2d')
+    // var canvas2 = document.getElementById('canvas-bottom')
+    // var context2 = canvas2.getContext('2d')
 
     var tempRCOneIndex
     var tempRCTwoIndex
@@ -466,28 +467,28 @@
     tempRCOneIndex = n1.vNames.indexOf(rcOne)
     tempRCTwoIndex = n1.vNames.indexOf(rcTwo)
 
-    tempGridColorSwap = n1.gridColor.dup()
-    tempGridTextSwap = n1.gridText.dup()
+    tempGridColorSwap = n1.gridColor.duplicateMatrix()
+    tempGridTextSwap = n1.gridText.duplicateMatrix()
 
     n1.vNames.setElement(tempRCTwoIndex, rcOne)
     n1.vNames.setElement(tempRCOneIndex, rcTwo)
 
-    tempRowOneColorSwap = n1.gridColor.row(tempRCOneIndex)
-    tempRowTwoColorSwap = n1.gridColor.row(tempRCTwoIndex)
-    tempRowOneTextSwap = n1.gridText.row(tempRCOneIndex)
-    tempRowTwoTextSwap = n1.gridText.row(tempRCTwoIndex)
+    tempRowOneColorSwap = n1.gridColor.getRow(tempRCOneIndex)
+    tempRowTwoColorSwap = n1.gridColor.getRow(tempRCTwoIndex)
+    tempRowOneTextSwap = n1.gridText.getRow(tempRCOneIndex)
+    tempRowTwoTextSwap = n1.gridText.getRow(tempRCTwoIndex)
 
     tempGridColorSwap.setRow(tempRCTwoIndex, tempRowOneColorSwap)
 
-    tempColOneColorSwap = tempGridColorSwap.col(tempRCOneIndex)
-    tempColTwoColorSwap = tempGridColorSwap.col(tempRCTwoIndex)
-    tempColOneTextSwap = tempGridTextSwap.col(tempRCOneIndex)
-    tempColTwoTextSwap = tempGridTextSwap.col(tempRCTwoIndex)
+    tempColOneColorSwap = tempGridColorSwap.getColumn(tempRCOneIndex)
+    tempColTwoColorSwap = tempGridColorSwap.getColumn(tempRCTwoIndex)
+    tempColOneTextSwap = tempGridTextSwap.getColumn(tempRCOneIndex)
+    tempColTwoTextSwap = tempGridTextSwap.getColumn(tempRCTwoIndex)
 
-    tempGridColorSwap.setCol(tempRCTwoIndex, tempColOneColorSwap)
-    tempGridColorSwap.setCol(tempRCOneIndex, tempColTwoColorSwap)
-    tempGridTextSwap.setCol(tempRCTwoIndex, tempColOneTextSwap)
-    tempGridTextSwap.setCol(tempRCOneIndex, tempColTwoTextSwap)
+    tempGridColorSwap.setColumn(tempRCTwoIndex, tempColOneColorSwap)
+    tempGridColorSwap.setColumn(tempRCOneIndex, tempColTwoColorSwap)
+    tempGridTextSwap.setColumn(tempRCTwoIndex, tempColOneTextSwap)
+    tempGridTextSwap.setColumn(tempRCOneIndex, tempColTwoTextSwap)
 
     n1.gridColor = tempGridColorSwap
     n1.gridText = tempGridTextSwap
@@ -498,7 +499,7 @@
       drawXGridCell(sx + 1, canvas1, context1, cellSize, n1.vNames) // added +1
       for (sy = 0; sy < 19; sy++) {
         drawYGridCell(sy + 1, canvas2, context2, cellSize, n1.vNames) // added +1
-        color = N1.MathLib.gridColor.e(sx + 1, sy + 1)
+        color = n1.gridColor.getElement(sx + 1, sy + 1)
         switch (color) {
           case 1:
             drawYellowCell(sx, sy, canvas, context, cellSize)
@@ -518,13 +519,13 @@
       }
     }
     // ############# draw code end ###########
-    document.getElementById('one').value = 'N'
-    document.getElementById('two').value = 'N'
-    document.getElementById('northTrue').style.display = 'none'
-    document.getElementById('northFalse').style.display = 'none'
-    document.getElementById('entryButton').style.display = 'inline'
-    document.getElementById('processButton').style.display = 'inline'
-    document.getElementById('inferenceButton').style.display = 'inline'
+    // document.getElementById('one').value = 'N'
+    // document.getElementById('two').value = 'N'
+    // document.getElementById('northTrue').style.display = 'none'
+    // document.getElementById('northFalse').style.display = 'none'
+    // document.getElementById('entryButton').style.display = 'inline'
+    // document.getElementById('processButton').style.display = 'inline'
+    // document.getElementById('inferenceButton').style.display = 'inline'
   }
 
   // #########################################################################
