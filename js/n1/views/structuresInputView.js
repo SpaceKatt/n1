@@ -8,7 +8,7 @@
     template: _.template($('#structure-input-tmpl').html()),
     initialize: function () {
       // may need to create new model using data from old model
-      N1.MathLib.GridTools.initHandler()
+      N1.MathLib.GridTools.initHandler(19)
     },
 
     render: function () {
@@ -38,6 +38,7 @@
       n1.rowNumber = $('#row-number').val()
       var model = n1.structuresList.at(0)
       var size = model.get('size')
+      alert('size is: ' + size)
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
       var cellSize = 20

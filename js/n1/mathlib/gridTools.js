@@ -3,9 +3,12 @@
   'use strict'
   // initialize the window with a blank canvas
   // and data input area..
-  N1.MathLib.GridTools.initHandler = function initHandler () {
-    n1.gridText = new N1.MathLib.BinaryMatrix.Zero(19)
-    n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(19)
+  //n1.size = 19
+  N1.MathLib.GridTools.initHandler = function initHandler (size) {
+    n1.gridText = new N1.MathLib.BinaryMatrix.Zero(size)
+    n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(size)
+    n1.vEntries = Array.apply(null, {length: size}).map(Number.call, Number)
+    console.log(n1.vEntries)
     n1.vNames = new N1.MathLib.BinaryVector.NewOne(
       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
   }
