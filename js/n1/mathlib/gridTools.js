@@ -137,19 +137,12 @@
     }
     }
   }
-
   // ##########################################################################
   // ##########################################################################
   //    Functions to enter data into the 19 by 19 grid
   // ##########################################################################
   // ##########################################################################
-  //N1.MathLib.GridTools.initGrid =	function initGrid
   N1.MathLib.GridTools.enterData = function enterData (rcOne, rcTwo, canvas, context, cellSize) {
-    // var rcOne = document.getElementById('one').value
-    // var rcTwo = document.getElementById('two').value
-    // var canvas = document.getElementById('BSMP_1')
-    // var context = canvas.getContext('2d')
-    // var cellSize = 20
     var color = 0
     var rcOneIndex
     var rcTwoIndex
@@ -192,12 +185,6 @@
           drawText(ex, ey, canvas, context, cellSize, n1.gridText)
         }
       }
-      // document.getElementById('northTrue').style.display = 'inline'
-      // document.getElementById('northFalse').style.display = 'inline'
-      // document.getElementById('entryButton').style.display = 'none'
-      // document.getElementById('processButton').style.display = 'none'
-      // document.getElementById('inferenceButton').style.display = 'none'
-      // writeToDocOne(gridColor.inspect());
     }
   }
   // #########################################################################
@@ -221,17 +208,10 @@
   // #########################################################################
   //   Now build a function to infer new information
   //   from the existing properly formed matrix
-  //   (all green points in the lower triangular.)
+  //   (all green points in the lower triangular section.)
   // #########################################################################
   // #########################################################################
-  function inferenceProcess () {
-    var cellSize = 20 // should be in global function variable
-    var canvas = document.getElementById('BSMP_1')
-    var context = canvas.getContext('2d')
-    var canvas1 = document.getElementById('BSMP_2')
-    var context1 = canvas1.getContext('2d')
-    var canvas2 = document.getElementById('BSMP_3')
-    var context2 = canvas2.getContext('2d')
+  N1.MathLib.GridTools.inferenceProcess = function inferenceProcess (canvas, context, canvas1, context1, canvas2, context2, cellSize) {
     var tempGridColor
     var tempGridText
     var tempId
@@ -247,11 +227,12 @@
     var ii
     var ix
     var iy
-    var tempGridColor = n1.gridColor.dup()
-    tempGridText = n1.gridText.dup()
+    var tempGridColor = n1.gridColor.duplicateMatrix()
+    tempGridText = n1.gridText.duplicateMatrix()
     tempId = N1.MathLib.BinaryMatrix.Id(19)
     rMatrix = tempGridText.add(tempId)
-    reachabilityMatrix(rMatrix)
+    N1.MathLib.GridTools.reachabilityMatrix(rMatrix)
+    // reachabilityMatrix(rMatrix)
     // ############## draw code here ########
     // need to redraw the main canvas using text values
     for (ix = 0; ix < 19; ix++) {
@@ -281,7 +262,7 @@
     // ############# draw code end ###########
   }
 
-  function reachabilityMatrix (matrixIn) {
+  N1.MathLib.GridTools.reachabilityMatrix = function reachabilityMatrix (matrixIn) {
     var rmOne
     var rmTwo
     var rmOut1
@@ -298,12 +279,12 @@
     var rx
     var matrixSum
     // start utility function here
-    rmOne = matrixIn.dup()
-    rmTwo = matrixIn.dup()
+    rmOne = matrixIn.duplicateMatrix()
+    rmTwo = matrixIn.duplicateMatrix()
     rmOut1 = rmOne.boolMultiply(rmTwo)
     rmOut2 = rmOut1.boolMultiply(rmTwo)
-    tempGridColor = n1.gridColor.dup()
-    tempGridText = n1.gridText.dup()
+    tempGridColor = n1.gridColor.duplicateMatrix()
+    tempGridText = n1.gridText.duplicateMatrix()
     // start a loop to calculate the reachability matrix
     while ((!done) && (loopFlag > 0)) {
       rmDiff1 = rmOut2.subtract(rmOut1)
@@ -321,7 +302,15 @@
       loopFlag = loopFlag - 1
     }
     rmDiff2 = rmOut2.subtract(rmOne)
-    textInferred = rmDiff2.map(function (rx) {
+    colorInferred = rmDiff2.mapProcess(function(rx){
+      if(rx >= 1) {
+        return 4
+      } else {
+        return 0
+      }
+    })
+
+    textInferred = rmDiff2.mapProcess(function (rx) {
       if (rx >= 1) {
         return 1
       } else {
@@ -436,18 +425,8 @@
   //   based on the approach in moveRC()
   // ##########################################################################
   // ##########################################################################
-  // N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1,  canvas2, context2)
-  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
-    // var cellSize = 20 // should be in global function variable
-    // var rcOne = document.getElementById('one').value
-    // var rcTwo = document.getElementById('two').value
-    // var canvas = document.getElementById('canvas-main')
-    // var context = canvas.getContext('2d')
-    // var canvas1 = document.getElementById('canvas-left-side')
-    // var context1 = canvas1.getContext('2d')
-    // var canvas2 = document.getElementById('canvas-bottom')
-    // var context2 = canvas2.getContext('2d')
 
+  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
     var tempRCOneIndex
     var tempRCTwoIndex
     var tempGridColorSwap
@@ -488,27 +467,13 @@
     tempColOneTextSwap = tempGridTextSwap.getColumn(tempRCOneIndex)
     tempColTwoTextSwap = tempGridTextSwap.getColumn(tempRCTwoIndex)
 
-    // tempColOneColorSwap = tempGridColorSwap.col(tempRCOneIndex);
-    // tempColTwoColorSwap = tempGridColorSwap.col(tempRCTwoIndex);
-    // tempColOneTextSwap  = tempGridTextSwap.col(tempRCOneIndex);
-    // tempColTwoTextSwap  = tempGridTextSwap.col(tempRCTwoIndex);
-
     tempGridColorSwap.setColumn(tempRCTwoIndex, tempColOneColorSwap)
     tempGridColorSwap.setColumn(tempRCOneIndex, tempColTwoColorSwap)
     tempGridTextSwap.setColumn(tempRCTwoIndex, tempColOneTextSwap)
     tempGridTextSwap.setColumn(tempRCOneIndex, tempColTwoTextSwap)
 
-    // tempGridColorSwap.setCol(tempRCTwoIndex, tempColOneColorSwap);
-  	// tempGridColorSwap.setCol(tempRCOneIndex, tempColTwoColorSwap);
-  	// tempGridTextSwap.setCol(tempRCTwoIndex, tempColOneTextSwap);
-  	// tempGridTextSwap.setCol(tempRCOneIndex, tempColTwoTextSwap);
-
-
     n1.gridColor = tempGridColorSwap
     n1.gridText = tempGridTextSwap
-
-    //gridColor = tempGridColorSwap;
-    //gridText = tempGridTextSwap;
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
@@ -536,47 +501,5 @@
         drawText(sx, sy, canvas, context, cellSize, n1.gridText)
       }
     }
-    // ############# draw code end ###########
-    // document.getElementById('one').value = 'N'
-    // document.getElementById('two').value = 'N'
-    // document.getElementById('northTrue').style.display = 'none'
-    // document.getElementById('northFalse').style.display = 'none'
-    // document.getElementById('entryButton').style.display = 'inline'
-    // document.getElementById('processButton').style.display = 'inline'
-    // document.getElementById('inferenceButton').style.display = 'inline'
-  }
-
-  // #########################################################################
-  // #########################################################################
-  //   A function to detect the presence of a one (1) in the upper triangular area
-  //   -- If there are no ones (1) in the upper triangular area,
-  //   -------- then the inference button is displayed for use
-  //   -- If there are ones (1) in the upper triangular area ,
-  //   -------- then the process button is displayed.
-  //
-  //   Adds tighter process logic to the GUI interface
-  // #########################################################################
-  // #########################################################################
-  // scan_upper_for_ones returns true if a 1 is found, false otherwise
-  // all the matrix diagonal entries are zero (0), so the matrix may be correctly
-  // scanned by starting with entry 0,0 and adding all the values in the first row (0).
-  // Then proceed with scanning row two (2) at 1,1 and add all elements in column 1 to 19.
-  // Then scan row three (3) starting at 2,2 and add all elements in  columns 2 to 19.
-  // Next scan row four (4) starting at 3,3 and add all elements in columns 3 to 19.
-  // Continue scanning each row and adding the elements in the selected columns.
-  // If the sum of the adding operation is greater than zero (0) return false.
-  // If the sum of the adding operation is equal to zero (0) return true
-
-  function scanUpperForOnes () {
-    var num = 19
-    var sum = 0
-    var value = 0
-    for (var i = 0; i < num; i++) {
-      for (var j = 0; j <= i; j++) {
-        value = n1.gridText.elements[i, j]
-        sum = parseInt(sum) + parseInt(value)
-      }
-    }
-    return sum
   }
 }())

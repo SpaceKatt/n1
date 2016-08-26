@@ -199,7 +199,7 @@
       }
     }
 
-      return N1.MathLib.BinaryMatrix.newOne(elements);
+      return N1.MathLib.BinaryMatrix.NewOne(elements);
   },
 
   /* need to update the add function for binary numbers */
@@ -312,7 +312,7 @@ this.boolMultiply = function(binary_matrix) {
      }
    }
  }
- var newMatrix = N1.MathLib.BinaryMatrix.newOne(elements);
+ var newMatrix = N1.MathLib.BinaryMatrix.NewOne(elements);
  return returnVector ? newMatrix.getColumn(1) : newMatrix;
 },
 
@@ -321,7 +321,7 @@ this.matrixView = function() {
  var elementsLength = this.elements.length;
  if (elementsLength === 0) return '[]';
  for (var row = 0; row < elementsLength; row++) {
-   matrix_rows.push(N1.MathLib.BinaryVector.newOne(this.elements[row]).view());
+   matrix_rows.push(N1.MathLib.BinaryVector.NewOne(this.elements[row]).view());
  }
  return matrix_rows.join('<br>');
 }
