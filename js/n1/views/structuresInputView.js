@@ -72,7 +72,6 @@
       var context2 = canvas2.getContext('2d')
       var cellSize = 20
       N1.MathLib.GridTools.inferenceProcess(canvas, context, canvas1, context1, canvas2, context2, cellSize)
-      alert('Inference all done...')
     }
   })
 }())
