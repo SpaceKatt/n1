@@ -536,6 +536,9 @@ function swapRC () {
   tempRowTwoTextSwap = gridText.row(tempRCTwoIndex)
 
   tempGridColorSwap.setRow(tempRCTwoIndex, tempRowOneColorSwap)
+  tempGridColorSwap.setRow(tempRCOneIndex, tempRowTwoColorSwap)
+  tempGridTextSwap.setRow(tempRCTwoIndex, tempRowOneTextSwap)
+  tempGridTextSwap.setRow(tempRCOneIndex, tempRowTwoTextSwap)
 
   tempColOneColorSwap = tempGridColorSwap.col(tempRCOneIndex)
   tempColTwoColorSwap = tempGridColorSwap.col(tempRCTwoIndex)

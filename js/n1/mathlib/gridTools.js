@@ -479,19 +479,37 @@
     tempRowTwoTextSwap = n1.gridText.getRow(tempRCTwoIndex)
 
     tempGridColorSwap.setRow(tempRCTwoIndex, tempRowOneColorSwap)
+    tempGridColorSwap.setRow(tempRCOneIndex, tempRowTwoColorSwap)
+    tempGridTextSwap.setRow(tempRCTwoIndex, tempRowOneTextSwap)
+    tempGridTextSwap.setRow(tempRCOneIndex, tempRowTwoTextSwap)
 
     tempColOneColorSwap = tempGridColorSwap.getColumn(tempRCOneIndex)
     tempColTwoColorSwap = tempGridColorSwap.getColumn(tempRCTwoIndex)
     tempColOneTextSwap = tempGridTextSwap.getColumn(tempRCOneIndex)
     tempColTwoTextSwap = tempGridTextSwap.getColumn(tempRCTwoIndex)
 
+    // tempColOneColorSwap = tempGridColorSwap.col(tempRCOneIndex);
+    // tempColTwoColorSwap = tempGridColorSwap.col(tempRCTwoIndex);
+    // tempColOneTextSwap  = tempGridTextSwap.col(tempRCOneIndex);
+    // tempColTwoTextSwap  = tempGridTextSwap.col(tempRCTwoIndex);
+
     tempGridColorSwap.setColumn(tempRCTwoIndex, tempColOneColorSwap)
     tempGridColorSwap.setColumn(tempRCOneIndex, tempColTwoColorSwap)
     tempGridTextSwap.setColumn(tempRCTwoIndex, tempColOneTextSwap)
     tempGridTextSwap.setColumn(tempRCOneIndex, tempColTwoTextSwap)
 
+    // tempGridColorSwap.setCol(tempRCTwoIndex, tempColOneColorSwap);
+  	// tempGridColorSwap.setCol(tempRCOneIndex, tempColTwoColorSwap);
+  	// tempGridTextSwap.setCol(tempRCTwoIndex, tempColOneTextSwap);
+  	// tempGridTextSwap.setCol(tempRCOneIndex, tempColTwoTextSwap);
+
+
     n1.gridColor = tempGridColorSwap
     n1.gridText = tempGridTextSwap
+
+    //gridColor = tempGridColorSwap;
+    //gridText = tempGridTextSwap;
+
     // ############## draw code here ########
     // need to redraw the main canvas using text values
     for (sx = 0; sx < 19; sx++) {

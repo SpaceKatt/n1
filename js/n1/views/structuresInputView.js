@@ -40,11 +40,11 @@
     enterData: function () {
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
-      alert('column-number is: ' + n1.columnNumber)
-      alert('row-number is: ' + n1.rowNumber)
+    //  alert('column-number is: ' + n1.columnNumber)
+    //  alert('row-number is: ' + n1.rowNumber)
       var model = n1.structuresList.at(0)
       var size = model.get('size')
-      alert('model is:' + model)
+    //  alert('model is:' + model)
 
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
@@ -59,11 +59,11 @@
     enterSwap: function () {
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
-      alert('column-number is: ' + n1.columnNumber)
-      alert('row-number is: ' + n1.rowNumber)
+    //  alert('column-number is: ' + n1.columnNumber)
+    //  alert('row-number is: ' + n1.rowNumber)
       var model = n1.structuresList.at(0)
       var size = model.get('size')
-      alert('model is:' + model)
+    //  alert('model is:' + model)
 
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
@@ -81,6 +81,5 @@
       N1.MathLib.GridTools.swapRC(rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize)
       alert('size is:' + size)
     }
-
   })
 }())
