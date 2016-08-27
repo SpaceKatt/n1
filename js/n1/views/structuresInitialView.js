@@ -26,10 +26,9 @@
     onCreate: function () {
       var $size = this.$('#matrix-size')
       n1.size = $size.val()
-      console.log('1- n1.size = ' + n1.size)
-      if ($size.val()) {
+      if (n1.size) {
         this.collection.create({
-          size: $size.val()
+          size: n1.size
         })
 
         $size.val('')

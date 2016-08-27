@@ -19,7 +19,7 @@
 
   // ###########################################################################
   // ###########################################################################
-  //       Functions to initialize the 19 by 19 grid
+  //       Functions to initialize the grid
   // ###########################################################################
   // ###########################################################################
 
@@ -39,13 +39,14 @@
     context1.fillStyle = 'wheat'
     context1.fillRect((x - 1) * cellSize, 0, cellSize - 1, cellSize - 1)
     context1.fillStyle = 'black'
-    context1.font = '1em tahoma'
+    context1.font = '0.8em tahoma'
+    //context1.textAlign = 'center'
     text = n1.vNames.element(x)
     if (x < 10) {
       context1.fillText(text, (x * cellSize) - 20, 15)
     }
     if (x >= 10) {
-      context1.fillText(text, (x * cellSize) - 22, 15) // chagned 20 to 22
+      context1.fillText(text, (x * cellSize) - 20, 15) // changed 20 to 22
     }
   }
 
@@ -54,7 +55,8 @@
     context2.fillStyle = 'wheat'
     context2.fillRect(0, (y - 1) * cellSize, cellSize - 1, cellSize - 1)
     context2.fillStyle = 'black'
-    context2.font = '1em tahoma'
+    context2.font = '0.8em tahoma'
+    //context2.textAlign = 'center'
     text = n1.vNames.element(y)
     context2.fillText(text, 0, (y * cellSize) - 5)
   }
@@ -98,7 +100,7 @@
   function drawText (x, y, canvas, context, cellSize, gridText) {
     var text
     context.fillStyle = 'black'
-    context.font = '1em tahoma'
+    context.font = '0.8em tahoma'
     context.textAlign = 'center'
     text = n1.gridText.getElement(x + 1, y + 1)
     context.fillText(text, (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
@@ -435,7 +437,7 @@
   // ##########################################################################
   // ##########################################################################
 
-  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
+  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) { // need to add matrix size n1.size 
     var tempRCOneIndex
     var tempRCTwoIndex
     var tempGridColorSwap

@@ -55,6 +55,7 @@ body {
 #canvas-bottom {
     border: 2px solid black;
     background-color: lightgrey;
+    margin-left: 35px;
 
 }
 
@@ -64,25 +65,31 @@ body {
     margin-left: 5px;
     top: 60px;
 }
-
-#rightList {
-	float:left;
-	width: 35px;
-	height:450px;
-
-}
+/*
+#leftList {
+	float:left; */
+	/* width: 35px;
+	height:450px; */
+  /* width: auto;
+	height: auto;
+  background-color: lightblue;
+} */
 
 #display {
-	float:left;
-	width: 430px;
-	height:450px;
-	background-color: lightgrey;
+	/* float:left;
+	 width: 430px;
+	height:450px; */
+  width: 50%;
+	height:auto;
+  background-color: lightgrey;
 }
-
+/*
 #input {
-	float:right;
-	width:368px;
-	height:450px;
+	float:right; */
+	/* width:368px;
+	height:450px; */
+/*  width:60%;
+	height:55%;
 	margin:auto;
-	background-color: lightgrey;
-}
+	background-color: lightgreen;
+} */
