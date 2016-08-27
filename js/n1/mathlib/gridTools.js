@@ -176,8 +176,11 @@
       enterGreenColor(rcOneIndex - 1, rcTwoIndex - 1)
       // need to redraw the main canvas using text values
       // use the gridColor matrix
-      for (ex = 0; ex < 19; ex++) { // reduce to 0 and <
-        for (ey = 0; ey < 19; ey++) { // reduce to 0 and <
+      console.log('entering data .. 1')
+      // for (ex = 0; ex < 19; ex++) { // reduce to 0 and <
+      for (ex = 0; ex < n1.size; ex++) { // reduce to 0 and <
+        // for (ey = 0; ey < 19; ey++) { // reduce to 0 and <
+        for (ey = 0; ey < n1.size; ey++) { // reduce to 0 and <
           color = n1.gridColor.getElement(ex + 1, ey + 1) // take out the + 1
           switch (color) {
             case 1:
@@ -437,7 +440,7 @@
   // ##########################################################################
   // ##########################################################################
 
-  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) { // need to add matrix size n1.size 
+  N1.MathLib.GridTools.swapRC = function swapRC (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) { // need to add matrix size n1.size
     var tempRCOneIndex
     var tempRCTwoIndex
     var tempGridColorSwap
@@ -488,10 +491,12 @@
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
-    for (sx = 0; sx < 19; sx++) {
+    for (sx = 0; sx < n1.size; sx++) {
+    // for (sx = 0; sx < 19; sx++) {
       var color
       drawXGridCell(sx + 1, canvas1, context1, cellSize, n1.vNames) // added +1
-      for (sy = 0; sy < 19; sy++) {
+      for (sy = 0; sy < n1.size; sy++) {
+      // for (sy = 0; sy < 19; sy++) {
         drawYGridCell(sy + 1, canvas2, context2, cellSize, n1.vNames) // added +1
         color = n1.gridColor.getElement(sx + 1, sy + 1)
         switch (color) {
