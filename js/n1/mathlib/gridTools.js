@@ -5,12 +5,16 @@
   // and data input area..
   //n1.size = 19
   N1.MathLib.GridTools.initHandler = function initHandler (size) {
+    // n1.size = size
+    console.log('3 - n1.size = ' + size)
     n1.gridText = new N1.MathLib.BinaryMatrix.Zero(size)
     n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(size)
+    size = Number(size) + Number(1)
+    console.log('4 - n1.size = ' + size)
     n1.vEntries = Array.apply(null, {length: size}).map(Number.call, Number)
+    n1.vEntries.shift()
     console.log(n1.vEntries)
-    n1.vNames = new N1.MathLib.BinaryVector.NewOne(
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+    n1.vNames = new N1.MathLib.BinaryVector.NewOne(n1.vEntries)
   }
 
   // ###########################################################################
@@ -113,7 +117,7 @@
     context.fillText('0', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
   }
 
-  N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1, canvas2, context2) {
+  N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1, canvas2, context2, size) {
     var x
     var y
     var cellSize = 20 // should be in global function
@@ -123,10 +127,12 @@
     context1.fillRect(0, 0, canvas1.width, canvas1.height)
     context2.fillStyle = 'black'
     context2.fillRect(0, 0, canvas2.width, canvas2.height)
-    for (x = 0; x < 19; x++) {
+    // for (x = 0; x < 19; x++) {
+    for (x = 0; x < size; x++) {
     drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
 
-    for (y = 0; y < 19; y++) {
+    // for (y = 0; y < 19; y++) {
+    for (y = 0; y < size; y++) {
       if (x !== y) {
         drawYellowCell(x, y, canvas, context, cellSize)
         enterYellowColor(x, y)

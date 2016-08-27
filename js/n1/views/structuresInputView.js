@@ -8,7 +8,8 @@
     template: _.template($('#structure-input-tmpl').html()),
     initialize: function () {
       // may need to create new model using data from old model
-      N1.MathLib.GridTools.initHandler(19)
+      console.log('2 - n1.size = ' + n1.size)
+      N1.MathLib.GridTools.initHandler(n1.size)
     },
 
     render: function () {
@@ -21,8 +22,10 @@
       var context2 = canvas2.getContext('2d')
       var canvas1 = $('#canvas-bottom').get(0)
       var context1 = canvas1.getContext('2d')
+      console.log('5 - n1.size = ' + n1.size)
       N1.MathLib.GridTools.initGrid(
-        canvas, context, canvas1, context1, canvas2, context2, n1.gridText, n1.vNames)
+        canvas, context, canvas1, context1, canvas2, context2, n1.size)
+      console.log('6 - n1.size = ' + n1.size)
 
       return this
     },
@@ -36,9 +39,9 @@
     enterData: function () {
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
-      var model = n1.structuresList.at(0)
-      var size = model.get('size')
-      alert('size is: ' + size)
+      // var model = n1.structuresList.at(0)
+      // var size = model.get('size')
+      // alert('size is: ' + size)
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
       var cellSize = 20
@@ -50,8 +53,8 @@
     enterSwap: function () {
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
-      var model = n1.structuresList.at(0)
-      var size = model.get('size')
+      // var model = n1.structuresList.at(0)
+      // var size = model.get('size')
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
       var canvas1 = $('#canvas-bottom').get(0)
