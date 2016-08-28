@@ -38,6 +38,14 @@
       $('#canvas-left-side').prop('height', Number(n1.size * 20))
       $('#canvas-bottom').prop('width', Number(n1.size * 20))
       $('#canvas-bottom').prop('height', Number(20))
+      var canvas = $('#canvas-main').get(0)
+      var context = canvas.getContext('2d')
+      var canvas1 = $('#canvas-bottom').get(0)
+      var context1 = canvas1.getContext('2d')
+      var canvas2 = $('#canvas-left-side').get(0)
+      var context2 = canvas2.getContext('2d')
+      var cellSize = 20
+      N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
         $size.val('')
         this.$('#structure-create').hide()
       }

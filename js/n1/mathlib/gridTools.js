@@ -6,14 +6,14 @@
   //n1.size = 19
   N1.MathLib.GridTools.initHandler = function initHandler (size) {
     // n1.size = size
-    console.log('3 - n1.size = ' + size)
+    // console.log('3 - n1.size = ' + size)
     n1.gridText = new N1.MathLib.BinaryMatrix.Zero(size)
     n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(size)
     size = Number(size) + Number(1)
-    console.log('4 - n1.size = ' + size)
+    // console.log('4 - n1.size = ' + size)
     n1.vEntries = Array.apply(null, {length: size}).map(Number.call, Number)
     n1.vEntries.shift()
-    console.log(n1.vEntries)
+    // console.log(n1.vEntries)
     n1.vNames = new N1.MathLib.BinaryVector.NewOne(n1.vEntries)
   }
 
@@ -131,21 +131,21 @@
     context2.fillRect(0, 0, canvas2.width, canvas2.height)
     // for (x = 0; x < 19; x++) {
     for (x = 0; x < size; x++) {
-    drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
+      drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
 
     // for (y = 0; y < 19; y++) {
-    for (y = 0; y < size; y++) {
-      if (x !== y) {
-        drawYellowCell(x, y, canvas, context, cellSize)
-        enterYellowColor(x, y)
-        drawYGridCell(y + 1, canvas2, context2, cellSize, n1.vNames)
+      for (y = 0; y < size; y++) {
+        if (x !== y) {
+          drawYellowCell(x, y, canvas, context, cellSize)
+          enterYellowColor(x, y)
+          drawYGridCell(y + 1, canvas2, context2, cellSize, n1.vNames)
+        }
+        if (x === y) {
+          drawRedCell(x, y, canvas, context, cellSize)
+          enterRedColor(x, y)
+        }
+        drawText(x, y, canvas, context, cellSize, n1.gridText)
       }
-      if (x === y) {
-        drawRedCell(x, y, canvas, context, cellSize)
-        enterRedColor(x, y)
-      }
-      drawText(x, y, canvas, context, cellSize, n1.gridText)
-    }
     }
   }
   // ##########################################################################
@@ -164,8 +164,9 @@
     // get index numbers for the entered values
     rcOneIndex = n1.vNames.indexOf(rcOne)
     rcTwoIndex = n1.vNames.indexOf(rcTwo)
-    if (!((rcOneIndex >= 1) && (rcOneIndex <= 19) && (rcTwoIndex >= 1) && (rcTwoIndex <= 19))) {
-      alert('Please enter a value from 1 to 19 in each box')
+    // if (!((rcOneIndex >= 1) && (rcOneIndex <= 19) && (rcTwoIndex >= 1) && (rcTwoIndex <= 19))) {
+    if (!((rcOneIndex >= 1) && (rcOneIndex <= n1.size) && (rcTwoIndex >= 1) && (rcTwoIndex <= n1.size))) {
+      alert('Please enter a value from 1 to ' + n1.size + ' in each box')
     } else if (rcOneIndex === rcTwoIndex) {
       alert('Please enter two different values.. values can not be the same.')
     } else {
