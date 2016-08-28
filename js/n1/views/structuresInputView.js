@@ -33,6 +33,7 @@
     },
 
     enterData: function () {
+      // n1.same = $('#entries-equal').val()
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
       var canvas = $('#canvas-main').get(0)
@@ -40,7 +41,12 @@
       var cellSize = 20
       var rcOne = n1.columnNumber
       var rcTwo = n1.rowNumber
-      N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
+      console.log($('#entries-equal').val())
+      if($('#entries-equal').val() === 'N') {
+        N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
+      } else {
+        alert('The entries are the same!')
+      }
     },
 
     enterSwap: function () {
