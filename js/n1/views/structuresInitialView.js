@@ -30,7 +30,14 @@
         this.collection.create({
           size: n1.size
         })
-
+      $('#display').css('heigth',(Number((n1.size * 20) + Number(40))))
+      $('#display').css('width',(Number((n1.size * 20) + Number(40))))
+      $('#canvas-main').prop('width', Number(n1.size * 20))
+      $('#canvas-main').prop('height', Number(n1.size * 20))
+      $('#canvas-left-side').prop('width', Number(20))
+      $('#canvas-left-side').prop('height', Number(n1.size * 20))
+      $('#canvas-bottom').prop('width', Number(n1.size * 20))
+      $('#canvas-bottom').prop('height', Number(20))
         $size.val('')
         this.$('#structure-create').hide()
       }
