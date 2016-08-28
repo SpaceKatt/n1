@@ -65,31 +65,7 @@ body {
     margin-left: 5px;
     top: 60px;
 }
-/*
-#leftList {
-	float:left; */
-	/* width: 35px;
-	height:450px; */
-  /* width: auto;
-	height: auto;
-  background-color: lightblue;
-} */
 
 #display {
-	/* float:left;
-	 width: 430px;
-	height:450px;
-  width: auto;
-	height:auto; */
   background-color: lightgrey;
 }
-/*
-#input {
-	float:right; */
-	/* width:368px;
-	height:450px; */
-/*  width:60%;
-	height:55%;
-	margin:auto;
-	background-color: lightgreen;
-} */

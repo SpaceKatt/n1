@@ -3,17 +3,12 @@
   'use strict'
   // initialize the window with a blank canvas
   // and data input area..
-  //n1.size = 19
   N1.MathLib.GridTools.initHandler = function initHandler (size) {
-    // n1.size = size
-    // console.log('3 - n1.size = ' + size)
     n1.gridText = new N1.MathLib.BinaryMatrix.Zero(size)
     n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(size)
     size = Number(size) + Number(1)
-    // console.log('4 - n1.size = ' + size)
     n1.vEntries = Array.apply(null, {length: size}).map(Number.call, Number)
     n1.vEntries.shift()
-    // console.log(n1.vEntries)
     n1.vNames = new N1.MathLib.BinaryVector.NewOne(n1.vEntries)
   }
 
@@ -56,7 +51,6 @@
     context2.fillRect(0, (y - 1) * cellSize, cellSize - 1, cellSize - 1)
     context2.fillStyle = 'black'
     context2.font = '0.8em tahoma'
-    //context2.textAlign = 'center'
     text = n1.vNames.element(y)
     context2.fillText(text, 0, (y * cellSize) - 5)
   }
@@ -108,13 +102,13 @@
 
   function drawText1 (x, y, canvas, context, cellSize) {
     context.fillStyle = 'black'
-    context.font = '1em tahoma'
+    context.font = '0.8em tahoma'
     context.textAlign = 'center'
     context.fillText('1', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
   }
   function drawText0 (x, y, canvas, context, cellSize) {
     context.fillStyle = 'black'
-    context.font = '1em tahoma'
+    context.font = '0.8em tahoma'
     context.textAlign = 'center'
     context.fillText('0', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
   }
@@ -129,11 +123,8 @@
     context1.fillRect(0, 0, canvas1.width, canvas1.height)
     context2.fillStyle = 'black'
     context2.fillRect(0, 0, canvas2.width, canvas2.height)
-    // for (x = 0; x < 19; x++) {
     for (x = 0; x < size; x++) {
       drawXGridCell(x + 1, canvas1, context1, cellSize, n1.vNames)
-
-    // for (y = 0; y < 19; y++) {
       for (y = 0; y < size; y++) {
         if (x !== y) {
           drawYellowCell(x, y, canvas, context, cellSize)
@@ -150,7 +141,7 @@
   }
   // ##########################################################################
   // ##########################################################################
-  //    Functions to enter data into the 19 by 19 grid
+  //    Functions to enter data into the grid
   // ##########################################################################
   // ##########################################################################
   N1.MathLib.GridTools.enterData = function enterData (rcOne, rcTwo, canvas, context, cellSize) {
@@ -164,7 +155,6 @@
     // get index numbers for the entered values
     rcOneIndex = n1.vNames.indexOf(rcOne)
     rcTwoIndex = n1.vNames.indexOf(rcTwo)
-    // if (!((rcOneIndex >= 1) && (rcOneIndex <= 19) && (rcTwoIndex >= 1) && (rcTwoIndex <= 19))) {
     if (!((rcOneIndex >= 1) && (rcOneIndex <= n1.size) && (rcTwoIndex >= 1) && (rcTwoIndex <= n1.size))) {
       alert('Please enter a value from 1 to ' + n1.size + ' in each box')
     } else if (rcOneIndex === rcTwoIndex) {
@@ -177,12 +167,9 @@
       enterGreenColor(rcOneIndex - 1, rcTwoIndex - 1)
       // need to redraw the main canvas using text values
       // use the gridColor matrix
-      console.log('entering data .. 1')
-      // for (ex = 0; ex < 19; ex++) { // reduce to 0 and <
-      for (ex = 0; ex < n1.size; ex++) { // reduce to 0 and <
-        // for (ey = 0; ey < 19; ey++) { // reduce to 0 and <
-        for (ey = 0; ey < n1.size; ey++) { // reduce to 0 and <
-          color = n1.gridColor.getElement(ex + 1, ey + 1) // take out the + 1
+      for (ex = 0; ex < n1.size; ex++) {
+        for (ey = 0; ey < n1.size; ey++) {
+          color = n1.gridColor.getElement(ex + 1, ey + 1)
           switch (color) {
             case 1:
               drawYellowCell(ex, ey, canvas, context, cellSize)
@@ -493,12 +480,10 @@
     // ############## draw code here ########
     // need to redraw the main canvas using text values
     for (sx = 0; sx < n1.size; sx++) {
-    // for (sx = 0; sx < 19; sx++) {
       var color
-      drawXGridCell(sx + 1, canvas1, context1, cellSize, n1.vNames) // added +1
+      drawXGridCell(sx + 1, canvas1, context1, cellSize, n1.vNames)
       for (sy = 0; sy < n1.size; sy++) {
-      // for (sy = 0; sy < 19; sy++) {
-        drawYGridCell(sy + 1, canvas2, context2, cellSize, n1.vNames) // added +1
+        drawYGridCell(sy + 1, canvas2, context2, cellSize, n1.vNames)
         color = n1.gridColor.getElement(sx + 1, sy + 1)
         switch (color) {
           case 1:
@@ -506,7 +491,6 @@
             break
           case 2:
             drawRedCell(sx, sy, canvas, context, cellSize)
-            // alert ("Drawing red cell in the box swap function");
             break
           case 3:
             drawGreenCell(sx, sy, canvas, context, cellSize)

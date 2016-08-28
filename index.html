@@ -26,6 +26,7 @@
 <script type='text/template' id='structure-input-tmpl'>
   <h1>General Modeling Grid </h1>
   <p>Initial Matrix Size Is: <%= size %></p>
+  <label>Entries Equal?: <input id='entries-equal' type='text' size='3'></label>
   <label>Enter Column Number: <input id='column-number' type='text' size='3'></label>
   <label>Enter Row Number: <input id='row-number' type='text' size='3'></label>
   <button class='enter-data'>Enter Data</button>
@@ -33,17 +34,11 @@
   <button class='enter-swap'>Swap Entries</button>
   <button class='enter-infer'>Infer Information</button>
   <br /> <br />
-  <!-- <div id='display'>
-    <div id='leftList'>
-      <canvas id='canvas-left-side' width='20' height='380'></canvas>
-    </div>
-    <canvas id='canvas-main' width='380' height='380'></canvas>
-    <canvas id='canvas-bottom' width='380' height='20'></canvas>
-  </div> -->
   <div id='display'>
     <canvas id='canvas-left-side' width='20' height='320'></canvas>
     <canvas id='canvas-main' width='320' height='320'></canvas>
     <canvas id='canvas-bottom' width='320' height='20'></canvas>
+    <canvas id='canvas-vector' width='320' height='0'></canvas>
   </div>
 
 </script>

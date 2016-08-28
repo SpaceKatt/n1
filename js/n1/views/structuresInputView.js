@@ -35,9 +35,6 @@
     enterData: function () {
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
-      // var model = n1.structuresList.at(0)
-      // var size = model.get('size')
-      // alert('size is: ' + size)
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
       var cellSize = 20
@@ -49,8 +46,6 @@
     enterSwap: function () {
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
-      // var model = n1.structuresList.at(0)
-      // var size = model.get('size')
       var canvas = $('#canvas-main').get(0)
       var context = canvas.getContext('2d')
       var canvas1 = $('#canvas-bottom').get(0)

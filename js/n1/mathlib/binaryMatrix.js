@@ -42,7 +42,6 @@
 
         return null
       } else {
-        /*  this.elements[rowNumberToReplace-1] = ReplacementRow.elements ; */
         this.elements[rowNumberToReplace - 1] = ReplacementRow
       }
     }
@@ -117,7 +116,6 @@
     numberOfElements = this.elements.length;
     for (var row = 0; row < numberOfElements; row++) {
       this.elements[row][columnNumberToSet-1] =
-      //ReplacementColumn.getElement(row+1);
       replacementColumn[row];
     }
   },

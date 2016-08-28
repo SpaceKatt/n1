@@ -46,8 +46,9 @@
       var context2 = canvas2.getContext('2d')
       var cellSize = 20
       N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
-        $size.val('')
-        this.$('#structure-create').hide()
+      $size.val('')
+      this.$('#structure-create').hide()
+      this.$('#canvas-vector').hide()
       }
     }
   })
