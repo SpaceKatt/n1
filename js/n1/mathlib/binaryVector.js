@@ -37,6 +37,12 @@
       return index
     }
 
+    this.deleteElement = function(elementIndex) {
+      if(elementIndex > -1) {
+        this.elements.splice(elementIndex, 1)
+      }
+    }
+
     this.view = function () {
       return '[' + this.elements.join(', ') + ']'
     }

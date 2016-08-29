@@ -223,6 +223,51 @@
       return value + tempMatrix[row-1][column-1];
     });
   },
+  // preprocess rows before adding color rows
+  // preprocess to remove rowTwo self referencing red cell
+  this.addColorRows = function (rowOne, rowTwo) {
+    if(rowOne.length <= 0) {
+      return null
+    } else if (rowTwo.length <= 0) {
+      return null
+    } else if (rowOne.length != rowTwo.length) {
+      return null
+    } else {
+      var tempColorRow = []
+      var i
+      for(i = 0; i < rowOne; i++) {
+        if((rowOne[i] === 1) && (rowTwo[i] === 1) ) {
+          tempColorRow[i] = 1
+        } else if ((rowOne[i] === 1) && (rowTwo[i] === 2 || 3 || 5)){
+          tempColorRow[i] = rowTwo[i]
+        } else {
+          return null
+        }
+      }
+      return tempColorRow
+    }
+  }
+
+  this.addTextRows = function (rowOne, rowTwo) {
+    if(rowOne.length <= 0) {
+      return null
+    } else if (rowTwo.length <= 0) {
+      return null
+    } else if (rowOne.length != rowTow.length) {
+      return null
+    } else {
+    var tempTextRow = []
+    var i
+    for(i = 0; i < rowOne; i++) {
+      tempTextRow[i] = rowOne[i] + rowTwo[i]
+      if(tempTextRow[i] > 1) {
+        tempTextRow[i] = 1
+      }
+    }
+
+    return tempTextRow
+    }
+  }
 
   this.subtract = function(matrix) {
    if (this.elements.length === 0)
