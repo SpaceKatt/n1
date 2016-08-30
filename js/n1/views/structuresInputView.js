@@ -48,6 +48,8 @@
       console.log($('#entries-equal').val())
       if($('#entries-equal').val() === 'N') {
         N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
+        this.$('#enter-swap').show()
+        this.$('#enter-infer').show()
       } else {
         // alert('The entries are the same!')
         N1.MathLib.GridTools.same(rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize)
@@ -62,6 +64,8 @@
         $('#canvas-bottom').prop('width', Number(n1.size * 20))
         $('#canvas-bottom').prop('height', Number(20))
         this.$('#canvas-vector').show()
+        this.$('#enter-swap').hide()
+        this.$('#enter-infer').hide()
         N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
       }
     },

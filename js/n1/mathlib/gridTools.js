@@ -602,6 +602,7 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
 
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
+  n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRow(rcTwoIndex))
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
