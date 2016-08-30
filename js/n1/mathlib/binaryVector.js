@@ -37,9 +37,9 @@
       return index
     }
 
-    this.deleteElement = function(elementIndex) {
-      if(elementIndex > -1) {
-        this.elements.splice(elementIndex, 1)
+    this.deleteElement = function (element) {
+      if(element > -1) {
+        this.elements.splice((element - 1), 1)
       }
       return this.elements
     }

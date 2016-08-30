@@ -304,7 +304,7 @@
       loopFlag = loopFlag - 1
     }
     rmDiff2 = rmOut2.subtract(rmOne)
-    colorInferred = rmDiff2.mapProcess(function(rx){
+    colorInferred = rmDiff2.mapProcess(function (rx) {
       if(rx >= 1) {
         return 4
       } else {
@@ -580,7 +580,7 @@
 
   rcOneIndex = (n1.vNames.indexOf(rcOne)) // need to get offset
   console.log('rcOne index is:' + rcOneIndex)
-  rcTwoIndex = (n1.vNames.indexOf(rcTwo)) //need to get offset
+  rcTwoIndex = (n1.vNames.indexOf(rcTwo))  //need to get offset
   n1.vNames.deleteElement(rcTwoIndex)
   console.log('n1.vNames is now:' + n1.vNames.view())
   console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
@@ -599,7 +599,7 @@
   console.log('n1.gridColor is : ' + n1.gridColor.matrixView())
   console.log('n1.gridText is: ' + n1.gridText.matrixView())
 
-  n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwo))
+  n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
 
   console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
 

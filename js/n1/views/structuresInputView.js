@@ -51,6 +51,24 @@
       } else {
         // alert('The entries are the same!')
         N1.MathLib.GridTools.same(rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize)
+        n1.size = n1.gridColor.elements.length
+        console.log('n1.gridColor.elements.length is: ' + n1.gridColor.elements.length)
+        $('#display').css('heigth',(Number((n1.size * 20) + Number(40))))
+        $('#display').css('width',(Number((n1.size * 20) + Number(40))))
+        $('#canvas-main').prop('width', Number(n1.size * 20))
+        $('#canvas-main').prop('height', Number(n1.size * 20))
+        $('#canvas-left-side').prop('width', Number(20))
+        $('#canvas-left-side').prop('height', Number(n1.size * 20))
+        $('#canvas-bottom').prop('width', Number(n1.size * 20))
+        $('#canvas-bottom').prop('height', Number(20))
+          N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
+        // var canvas = $('#canvas-main').get(0)
+        // var context = canvas.getContext('2d')
+        // var canvas1 = $('#canvas-bottom').get(0)
+        // var context1 = canvas1.getContext('2d')
+        // var canvas2 = $('#canvas-left-side').get(0)
+        // var context2 = canvas2.getContext('2d')
+        // var cellSize = 20
 
       }
     },
