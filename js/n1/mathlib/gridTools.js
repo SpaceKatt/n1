@@ -195,20 +195,7 @@
   //   Now build a function to handle the order assessment
   // #########################################################################
   // #########################################################################
-  /*
-  function noSwapRC () {
-    document.getElementById('one').value = 'N'
-    document.getElementById('two').value = 'N'
-    document.getElementById('northTrue').style.display = 'none'
-    document.getElementById('northFalse').style.display = 'none'
-    document.getElementById('entryButton').style.display = 'inline'
-    document.getElementById('processButton').style.display = 'inline'
-    document.getElementById('inferenceButton').style.display = 'inline'
-  } */
-  /*
-  function processData () {
-    document.getElementById('moveData').style.display = 'inline'
-  } */
+
   // #########################################################################
   // #########################################################################
   //   Now build a function to infer new information
