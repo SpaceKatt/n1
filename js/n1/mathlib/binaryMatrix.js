@@ -260,12 +260,9 @@
       return value + tempMatrix[row-1][column-1];
     });
   },
-  // preprocess rows before adding color rows
+  // preprocess rows before adding color rows (maybe not??)
   // preprocess to remove rowTwo self referencing red cell
   this.addColorRows = function (rowOne, rowTwo) {
-    console.log('rowOne is: ' + rowOne.view())
-    console.log('rowTwo is: ' + rowTwo.view())
-    console.log('addColorRows -- 1')
     if(rowOne.length <= 0) {
       return null
     } else if (rowTwo.length <= 0) {
@@ -273,30 +270,17 @@
     } else if (rowOne.length != rowTwo.length) {
       return null
     } else {
-      console.log('addColorRows -- 2')
-      // console.log('rowOne[0] is: ' + rowOne.element(1))
       var tempColorRow = N1.MathLib.BinaryVector.Zero(rowOne.elements.length)
       var i
-      // console.log('rowOne.length is: ' + rowOne.elements.length)
       for(i = 0; i < rowOne.elements.length; i++) {
-        // console.log('rowOne[i] is: ' + rowOne.element(i + 1))
-        // console.log('rowTwo[i] is: ' + rowTwo.element(i + 1))
         if((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 1) ) {
-          // console.log('rowOne[i] is: ' + rowOne.element(i + 1))
-          // console.log('rowTwo[i] is: ' + rowTwo.element(i + 1))
           tempColorRow.setElement(i + 1, 1)
-        } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === (2 || 3 || 5))){
-          // console.log('rowOne[i] is: ' + rowOne.element(i + 1))
-          // console.log('rowTwo[i] is: ' + rowTwo.element(i + 1))
+        } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === (2 || 3 || 5))) {
           tempColorRow.setElement(i + 1, rowTwo.element(i + 1))
         } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 1)) {
-          // console.log('addColorRows -- 3')
           tempColorRow.setElement(i + 1, 2)
-          // return null
         }
       }
-      // console.log('addColorRows -- 4 ')
-      console.log('view color rows --  ' + tempColorRow.view())
       return tempColorRow
     }
   }
