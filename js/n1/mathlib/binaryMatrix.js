@@ -61,7 +61,7 @@
     }
 
     // delete row function here
-    this.deleteRow = function (rowNumberToDelete) {
+    this.deleteRow = function (rowNumberToDelete) { // should be delteRowAndColumn
       console.log('Row number to delete is.. ' + rowNumberToDelete)
       // var tempLength = this.elements.length
       console.log('this elements length is.. ' + this.elements.length)
@@ -102,6 +102,7 @@
       matrix element cell.');
       console.log('Matrix element, to set, is out of range, please enter \
       valid matrix element cell.');
+      /* eslint-enable */
     } else {
       this.elements[row-1][column-1] = valueToSet;
     }
@@ -262,8 +263,8 @@
   },
   // preprocess rows before adding color rows (maybe not??)
   // preprocess to remove rowTwo self referencing red cell
-  this.addColorRows = function (rowOne, rowTwo) {
-    if(rowOne.length <= 0) {
+  this.addColorRows = function (rowOne, rowTwo) { // check logic in color add ...
+    if(rowOne.length <= 0) {  // write a small performance spec..
       return null
     } else if (rowTwo.length <= 0) {
       return null
