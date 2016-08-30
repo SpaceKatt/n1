@@ -41,6 +41,7 @@
       if(elementIndex > -1) {
         this.elements.splice(elementIndex, 1)
       }
+      return this.elements
     }
 
     this.view = function () {

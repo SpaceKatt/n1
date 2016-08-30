@@ -35,7 +35,6 @@
     context1.fillRect((x - 1) * cellSize, 0, cellSize - 1, cellSize - 1)
     context1.fillStyle = 'black'
     context1.font = '0.8em tahoma'
-    //context1.textAlign = 'center'
     text = n1.vNames.element(x)
     if (x < 10) {
       context1.fillText(text, (x * cellSize) - 20, 15)
@@ -516,15 +515,6 @@
 // #########################################################################
 
   N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
-  // var cellSize = 20
-  // var moveOne = document.getElementById('moveOne').value
-  // var moveTwo = document.getElementById('moveTwo').value
-  // var canvas = document.getElementById('canvas-main')
-  // var context = canvas.getContext('2d')
-  // var canvas1 = document.getElementById('canvas-bottom')
-  // var context1 = canvas1.getContext('2d')
-  // var canvas2 = document.getElementById('canvas-left-side')
-  // var context2 = canvas2.getContext('2d')
 
   var tempRowOneColor
   var tempRowTwoColor
@@ -546,51 +536,104 @@
   // var moveTwoIndex
   var rcTwoIndex
 
-  rcOneIndex = n1.vNames.indexOf(rcOne)
-  rcTwoIndex = n1.vNames.indexOf(rcTwo)
+  function drawXGridCell (x, canvas1, context1, cellSize, vNames) {
+    var text
+    context1.fillStyle = 'wheat'
+    context1.fillRect((x - 1) * cellSize, 0, cellSize - 1, cellSize - 1)
+    context1.fillStyle = 'black'
+    context1.font = '0.8em tahoma'
+    text = n1.vNames.element(x)
+    if (x < 10) {
+      context1.fillText(text, (x * cellSize) - 20, 15)
+    }
+    if (x >= 10) {
+      context1.fillText(text, (x * cellSize) - 20, 15) // changed 20 to 22
+    }
+  }
+
+  function drawYGridCell (y, canvas2, context2, cellSize, vNames) {
+    var text
+    context2.fillStyle = 'wheat'
+    context2.fillRect(0, (y - 1) * cellSize, cellSize - 1, cellSize - 1)
+    context2.fillStyle = 'black'
+    context2.font = '0.8em tahoma'
+    text = n1.vNames.element(y)
+    context2.fillText(text, 0, (y * cellSize) - 5)
+  }
+
+  function drawRedCell (x, y, canvas, context, cellSize) {
+    context.fillStyle = 'red'
+    context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
+  }
+
+  function drawText (x, y, canvas, context, cellSize, gridText) {
+    var text
+    context.fillStyle = 'black'
+    context.font = '0.8em tahoma'
+    context.textAlign = 'center'
+    text = n1.gridText.getElement(x + 1, y + 1)
+    context.fillText(text, (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
+  }
+
+  function drawYellowCell (x, y, canvas, context, cellSize) {
+    var x1 = x
+    var y1 = y
+    context.fillStyle = 'yellow'
+    context.fillRect(x1 * cellSize, y1 * cellSize, cellSize - 1, cellSize - 1)
+  }
+
+  rcOneIndex = (n1.vNames.indexOf(rcOne)) // need to get offset
+  console.log('rcOne index is:' + rcOneIndex)
+  rcTwoIndex = (n1.vNames.indexOf(rcTwo)) //need to get offset
  // remove rcTwo values from vNames
   n1.vNames.deleteElement(rcTwoIndex)
+  console.log('n1.vNames is now:' + n1.vNames.view())
   // n1.vNames.setElement(moveOneIndex, moveTwo)
   // need to add the two rows data together to fit in on row
-  tempRowOneColor = n1.gridColor.row(rcOneIndex)
-  tempRowTwoColor = n1.gridColor.row(rcTwoIndex)
-  tempRowOneText = n1.gridText.row(rcOneIndex)
-  tempRowTwoText = n1.gridText.row(rcTwoIndex)
-  // need new row add function .. matrix.addRows( rowOne, rowTwo)
-  //
-  // tempGridColor.setRow(rcTwoIndex, tempRowOneColor)
-  // tempGridColor.setRow(rcOneIndex, tempRowTwoColor)
-  // tempGridText.setRow(rcTwoIndex, tempRowOneText)
-  // tempGridText.setRow(rcOneIndex, tempRowTwoText)
-  //
-  // need new column add function .. matrix.addColumns( columnOne, columnTwo)
-  //
-  // tempColOneColor = tempGridColor.col(rcOneIndex)
-  // tempColTwoColor = tempGridColor.col(rcTwoIndex)
-  // tempColOneText = tempGridText.col(rcOneIndex)
-  // tempColTwoText = tempGridText.col(rcTwoIndex)
-  //
-  // tempGridColor.setCol(rcTwoIndex, tempColOneColor)
-  // tempGridColor.setCol(rcOneIndex, tempColTwoColor)
-  // tempGridText.setCol(rcTwoIndex, tempColOneText)
-  // tempGridText.setCol(rcOneIndex, tempColTwoText)
-  //
-  // need to reduce main matrix size by one
-  // need to create new combined vector
-  n1.gridColor = tempGridColor
-  n1.gridText = tempGridText
+  // tempRowOneColor = n1.gridColor.row(rcOneIndex)
+  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  tempRowOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcOneIndex))
+  tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
+  console.log('rowOne is: ' + tempRowOneColor.view())
+  console.log('rowTwo is: ' + tempRowTwoColor.view())
+  tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
+  console.log('tempRowOneColor is now:' + tempRowOneColor.view())
+  // tempRowTwoColor = n1.gridColor.row(rcTwoIndex)
+  // tempRowOneText = n1.gridText.row(rcOneIndex)
+  tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
+  tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
+  console.log('rowOneText is: ' + tempRowOneText.view())
+  console.log('rowTwoText is: ' + tempRowTwoText.view())
+  tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
+  console.log('rowOneText now is: ' + tempRowOneText.view())
+  console.log('n1.gridColor is : ' + n1.gridColor.matrixView())
+  console.log('n1.gridText is: ' + n1.gridText.matrixView())
+
+  n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwo))
+
+  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+
+  // n1.gridColor = tempGridColor
+  // n1.gridText = tempGridText
 
   // ############## draw code here ########
   // need to redraw the main canvas using text values
   // use the gridColor matrix
   // for (mx = 0; mx < 19; mx++) {
-  for (mx = 0; mx < n1.size; mx++) { //n1.size after reduction by one
+  console.log('n1.gridColor.elements.length is: ' + n1.gridColor.elements.length)
+  context1.clearRect(0, 0, canvas1.width, canvas1.height)
+  context2.clearRect(0, 0, canvas2.width, canvas2.height)
+  context.clearRect(0, 0, canvas.width, canvas.height)
+  for (mx = 0; mx < n1.gridColor.elements.length; mx++) {
     var color
+    // context1.clearRect(0, 0, canvas1.width, canvas1.height)
     drawXGridCell(mx + 1, canvas1, context1, cellSize, n1.vNames)
     // for (my = 0; my < 19; my++) {
-    for (my = 0; my < n1.size; my++) { // n1.size after reduction by one
+    for (my = 0; my < n1.gridColor.elements.length; my++) {
+      // context2.clearRect(0, 0, canvas2.width, canvas2.height)
       drawYGridCell(my + 1, canvas2, context2, cellSize, n1.vNames)
       color = n1.gridColor.getElement(mx + 1, my + 1)
+      // context.clearRect(0, 0, canvas.width, canvas.height)
       switch (color) {
         case 1:
           drawYellowCell(mx, my, canvas, context, cellSize)
