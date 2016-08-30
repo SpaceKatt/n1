@@ -221,15 +221,6 @@
     var tempGridText
     var tempId
     var rMatrix
-    // var rmOne
-    // var rmTwo
-    // var rmOut1
-    // var rmOut2
-    // var rmDiff1
-    // var rmDiff2
-    // var colorInferred
-    // var textInferred
-    // var ii
     var ix
     var iy
     tempGridColor = n1.gridColor.duplicateMatrix()
@@ -279,11 +270,8 @@
     var textInferred
     var tempGridColor
     var tempGridText
-    // var done = new Boolean(0)
     var done = Boolean(0)
     var loopFlag = 25
-    // var ri
-    // var rx
     var matrixSum
     // start utility function here
     rmOne = matrixIn.duplicateMatrix()
@@ -597,6 +585,8 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
 
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
   n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRow(rcTwoIndex))
+  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  console.log('n1.gridText is: ' + n1.gridText.matrixView())
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
