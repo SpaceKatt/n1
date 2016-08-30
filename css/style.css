@@ -59,6 +59,13 @@ body {
 
 }
 
+#canvas-vector {
+    border: 2px solid black;
+    background-color: lightgrey;
+    margin-left: 35px;
+
+}
+
 #canvas-left-side {
 	border: 2px solid black;
     background-color: lightgrey;

@@ -1,4 +1,4 @@
-/* global N1, n1 */
+/* global N1, n1, alert */
 (function () {
   'use strict'
   // initialize the window with a blank canvas
@@ -76,19 +76,19 @@
     context.fillStyle = 'lightblue'
     context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
   }
-
+  /*
   function enterLightBlueColor (x, y) {
     n1.gridColor.setElement(x + 1, y + 1, 4)
-  }
-
+  } */
+  /*
   function drawOrangeCell (x, y, canvas, context, cellSize) {
     context.fillStyle = 'orange'
     context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
-  }
-
+  } */
+  /*
   function enterOrangeColor (x, y) {
     n1.gridColor.setE(x + 1, y + 1, 5)
-  }
+  } */
 
   function drawText (x, y, canvas, context, cellSize, gridText) {
     var text
@@ -98,19 +98,20 @@
     text = n1.gridText.getElement(x + 1, y + 1)
     context.fillText(text, (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
   }
-
+  /*
   function drawText1 (x, y, canvas, context, cellSize) {
     context.fillStyle = 'black'
     context.font = '0.8em tahoma'
     context.textAlign = 'center'
     context.fillText('1', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
-  }
+  } */
+  /*
   function drawText0 (x, y, canvas, context, cellSize) {
     context.fillStyle = 'black'
     context.font = '0.8em tahoma'
     context.textAlign = 'center'
     context.fillText('0', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
-  }
+  } */
 
   N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1, canvas2, context2, size) {
     var x
@@ -147,7 +148,7 @@
     var color = 0
     var rcOneIndex
     var rcTwoIndex
-    var ei
+    // var ei
     var ex
     var ey
 
@@ -193,6 +194,7 @@
   //   Now build a function to handle the order assessment
   // #########################################################################
   // #########################################################################
+  /*
   function noSwapRC () {
     document.getElementById('one').value = 'N'
     document.getElementById('two').value = 'N'
@@ -201,10 +203,11 @@
     document.getElementById('entryButton').style.display = 'inline'
     document.getElementById('processButton').style.display = 'inline'
     document.getElementById('inferenceButton').style.display = 'inline'
-  }
+  } */
+  /*
   function processData () {
     document.getElementById('moveData').style.display = 'inline'
-  }
+  } */
   // #########################################################################
   // #########################################################################
   //   Now build a function to infer new information
@@ -217,18 +220,18 @@
     var tempGridText
     var tempId
     var rMatrix
-    var rmOne
-    var rmTwo
-    var rmOut1
-    var rmOut2
-    var rmDiff1
-    var rmDiff2
-    var colorInferred
-    var textInferred
-    var ii
+    // var rmOne
+    // var rmTwo
+    // var rmOut1
+    // var rmOut2
+    // var rmDiff1
+    // var rmDiff2
+    // var colorInferred
+    // var textInferred
+    // var ii
     var ix
     var iy
-    var tempGridColor = n1.gridColor.duplicateMatrix()
+    tempGridColor = n1.gridColor.duplicateMatrix()
     tempGridText = n1.gridText.duplicateMatrix()
     // tempId = N1.MathLib.BinaryMatrix.Id(19)
     tempId = N1.MathLib.BinaryMatrix.Id(n1.size)
@@ -277,8 +280,8 @@
     var tempGridText
     var done = new Boolean(0)
     var loopFlag = 25
-    var ri
-    var rx
+    // var ri
+    // var rx
     var matrixSum
     // start utility function here
     rmOne = matrixIn.duplicateMatrix()
@@ -305,7 +308,7 @@
     }
     rmDiff2 = rmOut2.subtract(rmOne)
     colorInferred = rmDiff2.mapProcess(function (rx) {
-      if(rx >= 1) {
+      if (rx >= 1) {
         return 4
       } else {
         return 0
@@ -331,7 +334,7 @@
   //   That are existing data in the grid (move city data )
   // #########################################################################
   // #########################################################################
-
+/*
   function moveRC () {
     var cellSize = 20
     var moveOne = document.getElementById('moveOne').value
@@ -357,7 +360,7 @@
     var tempGridText
     var mx
     var my
-    var mi
+    // var mi
     var moveOneIndex
     var moveTwoIndex
 
@@ -420,6 +423,7 @@
     // ############# draw code end ###########
     document.getElementById('moveData').style.display = 'none'
   }
+  */
   // ##########################################################################
   // ##########################################################################
   //   Now build a function to swap the selected row and column pairs
@@ -441,7 +445,7 @@
     var tempColTwoColorSwap
     var tempColOneTextSwap
     var tempColTwoTextSwap
-    var si
+    // var si
     var sx
     var sy
 
@@ -512,23 +516,22 @@
 // #########################################################################
 // #########################################################################
 
-  N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
-
+N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
   var tempRowOneColor
   var tempRowTwoColor
   var tempRowOneText
   var tempRowTwoText
 
-  var tempColOneColor
-  var tempColTwoColor
-  var tempColOneText
-  var tempColTwoText
+    // var tempColOneColor
+    // var tempColTwoColor
+    // var tempColOneText
+    // var tempColTwoText
 
-  var tempGridColor
-  var tempGridText
+    // var tempGridColor
+    // var tempGridText
   var mx
   var my
-  var mi
+    // var mi
   var rcOneIndex
   var rcTwoIndex
 
@@ -578,34 +581,30 @@
     context.fillRect(x1 * cellSize, y1 * cellSize, cellSize - 1, cellSize - 1)
   }
 
-  rcOneIndex = (n1.vNames.indexOf(rcOne)) // need to get offset
-  console.log('rcOne index is:' + rcOneIndex)
-  rcTwoIndex = (n1.vNames.indexOf(rcTwo))  //need to get offset
+  function drawGreenCell (x, y, canvas, context, cellSize) {
+    context.fillStyle = 'green'
+    context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
+  }
+
+  function drawLightBlueCell (x, y, canvas, context, cellSize) {
+    context.fillStyle = 'lightblue'
+    context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
+  }
+
+  rcOneIndex = (n1.vNames.indexOf(rcOne))
+  rcTwoIndex = (n1.vNames.indexOf(rcTwo))
   n1.vNames.deleteElement(rcTwoIndex)
-  console.log('n1.vNames is now:' + n1.vNames.view())
-  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
   tempRowOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcOneIndex))
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
-  console.log('rowOne is: ' + tempRowOneColor.view())
-  console.log('rowTwo is: ' + tempRowTwoColor.view())
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
-  console.log('tempRowOneColor is now:' + tempRowOneColor.view())
   tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
   tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
-  console.log('rowOneText is: ' + tempRowOneText.view())
-  console.log('rowTwoText is: ' + tempRowTwoText.view())
   tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
-  console.log('rowOneText now is: ' + tempRowOneText.view())
-  console.log('n1.gridColor is : ' + n1.gridColor.matrixView())
-  console.log('n1.gridText is: ' + n1.gridText.matrixView())
 
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
 
-  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
-
-  // ############## draw code here ########
-  // need to redraw the main canvas using text values
-  console.log('n1.gridColor.elements.length is: ' + n1.gridColor.elements.length)
+    // ############## draw code here ########
+    // need to redraw the main canvas using text values
   context1.clearRect(0, 0, canvas1.width, canvas1.height)
   context2.clearRect(0, 0, canvas2.width, canvas2.height)
   context.clearRect(0, 0, canvas.width, canvas.height)
