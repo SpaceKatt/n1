@@ -33,7 +33,9 @@
     },
 
     enterData: function () {
-      // n1.same = $('#entries-equal').val()
+      if(n1.vectorGrid.length === 0) {
+          $('#canvas-vector').hide()
+      }
       n1.columnNumber = $('#column-number').val()
       n1.rowNumber = $('#row-number').val()
       var canvas = $('#canvas-main').get(0)
@@ -45,16 +47,16 @@
       var cellSize = 20
       var rcOne = n1.columnNumber
       var rcTwo = n1.rowNumber
-      console.log($('#entries-equal').val())
+      // console.log($('#entries-equal').val())
       if($('#entries-equal').val() === 'N') {
         N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
         this.$('#enter-swap').show()
         this.$('#enter-infer').show()
       } else {
-        // alert('The entries are the same!')
         N1.MathLib.GridTools.same(rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize)
         n1.size = n1.gridColor.elements.length
-        console.log('n1.gridColor.elements.length is: ' + n1.gridColor.elements.length)
+        n1.vectorGrid.push(rcOne)
+        // console.log('n1.gridColor.elements.length is: ' + n1.gridColor.elements.length)
         $('#display').css('heigth',(Number((n1.size * 20) + Number(40))))
         $('#display').css('width',(Number((n1.size * 20) + Number(40))))
         $('#canvas-main').prop('width', Number(n1.size * 20))
@@ -64,6 +66,8 @@
         $('#canvas-bottom').prop('width', Number(n1.size * 20))
         $('#canvas-bottom').prop('height', Number(20))
         this.$('#canvas-vector').show()
+        $('#canvas-vector').prop('width', Number(n1.size * 20))
+        $('#canvas-vector').prop('height', Number(20))
         this.$('#enter-swap').hide()
         this.$('#enter-infer').hide()
         N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)

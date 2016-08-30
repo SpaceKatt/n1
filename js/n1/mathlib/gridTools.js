@@ -4,6 +4,7 @@
   // initialize the window with a blank canvas
   // and data input area..
   N1.MathLib.GridTools.initHandler = function initHandler (size) {
+    n1.vectorGrid = []
     n1.gridText = new N1.MathLib.BinaryMatrix.Zero(size)
     n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(size)
     size = Number(size) + Number(1)
@@ -278,7 +279,8 @@
     var textInferred
     var tempGridColor
     var tempGridText
-    var done = new Boolean(0)
+    // var done = new Boolean(0)
+    var done = Boolean(0)
     var loopFlag = 25
     // var ri
     // var rx
@@ -298,7 +300,8 @@
       // continue the boolMultiply until sum of rmDiff_1 is zero
       matrixSum = rmOut2.subtract(rmOut1)
       if (matrixSum === 0) {
-        done = new Boolean(1)
+        // done = new Boolean(1)
+        done = Boolean(1)
         loopFlag = 0
       } else {
         rmOut1 = rmOut2
@@ -521,17 +524,8 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   var tempRowTwoColor
   var tempRowOneText
   var tempRowTwoText
-
-    // var tempColOneColor
-    // var tempColTwoColor
-    // var tempColOneText
-    // var tempColTwoText
-
-    // var tempGridColor
-    // var tempGridText
   var mx
   var my
-    // var mi
   var rcOneIndex
   var rcTwoIndex
 
