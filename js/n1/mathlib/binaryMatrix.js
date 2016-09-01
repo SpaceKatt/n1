@@ -3,7 +3,6 @@
   'use strict'
   N1.MathLib.BinaryMatrix = function BinaryMatrix () {
     this.setElements = function (newElements) {
-      // var tempLength
       var row
       var column
       var elements = newElements.elements || newElements
@@ -61,9 +60,6 @@
 
     // delete row and column method here
     this.deleteRowAndColumn = function (rowNumberToDelete) {
-      // console.log('this.elements are (1): ' + this.matrixView())
-      // console.log('Row number to delete is.. ' + rowNumberToDelete)
-      // console.log('this elements length is.. ' + this.elements.length)
       if (rowNumberToDelete < 1 || rowNumberToDelete > this.elements.length) {
       /* eslint-disable */
       alert('Matrix row, to delete, is out of range, please enter valid \
@@ -80,33 +76,20 @@
       // console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
       var i
       var flag1 = 1
-      for(i = 0; i < deleteMatrixSize; i++) {
-        if(i !== (rowNumberToDelete - 1)) {
+      for (i = 0; i < deleteMatrixSize; i++) {
+        if (i !== (rowNumberToDelete - 1)) {
           deleteMatrixObject.setRow(flag1, this.getRow(i + 1))
-          // console.log('flag1 is: ' + flag1)
           flag1 = flag1 + 1
         }
-      // console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
       }
-      for(var j = 0; j < deleteMatrixObject.elements.length; j++) {
-        // console.log('mo length is: ' + deleteMatrixObject.elements.length)
-        // console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
-        // console.log('j is: ' + j)
+      for (var j = 0; j < deleteMatrixObject.elements.length; j++) {
         tempMo = deleteMatrixObject.getRow(j + 1)
-        // console.log('mo view 1' + tempMo)
         tempMore = N1.MathLib.BinaryVector.NewOne(tempMo)
-        // console.log('vector view 1' + tempMore.view())
         tempMo = tempMore.deleteElement(rowNumberToDelete)
-        // console.log('mo view 111' + tempMo)
-        deleteMatrixObject.setRow(j+1, tempMo)
+        deleteMatrixObject.setRow(j + 1, tempMo)
       }
-      // console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
-      // console.log('this.elements is: ' + this.matrixView())
-      // console.log('row delete column length' + deleteMatrixRowElements[0].length)
-      // return deleteMatrixRowElements
       return deleteMatrixObject.elements
     }
-
 
     this.setElement = function (row, column, valueToSet) {
       if (row < 1 || row > this.elements.length || column < 1 || column >
@@ -117,13 +100,13 @@
       console.log('Matrix element, to set, is out of range, please enter \
       valid matrix element cell.');
       /* eslint-enable */
-    } else {
-      this.elements[row-1][column-1] = valueToSet;
+      } else {
+        this.elements[row - 1][column - 1] = valueToSet
+      }
     }
-  },
 
-  this.getElement = function(row, column) {
-    if(row < 1 || row > this.elements.length || column < 1 || column >
+    this.getElement = function (row, column) {
+      if (row < 1 || row > this.elements.length || column < 1 || column >
       this.elements[0].length) {
       /* eslint-disable */
       alert('Matrix element, to return is out of range. Please enter a valid \
@@ -132,18 +115,18 @@
       valid matrix element cell.');
       /* eslint-enable */
 
-      return null;
-    }
+        return null
+      }
 
-    return this.elements[row-1][column-1];
-  },
+      return this.elements[row - 1][column - 1]
+    },
 
-  this.setColumn = function(columnNumberToSet, replacementColumn) {
-  var elementsLength;
-  var columnNumberToSet;
-  var numberOfElements;
-  var row;
-    if (this.elements.length === 0) {
+    this.setColumn = function (columnNumberToSet, replacementColumn) {
+      var elementsLength
+      var columnNumberToSet
+      var numberOfElements
+      var row
+      if (this.elements.length === 0) {
       /* eslint-disable */
       alert('Matrix column, to set, is out of range, matrix is empty. Select \
       a matrix with content.');
@@ -151,9 +134,9 @@
       Select a matrix with content.');
       /* eslint-enable */
 
-      return null;
-    }
-    if (columnNumberToSet < 1 || columnNumberToSet > this.elements[0].length) {
+        return null
+      }
+      if (columnNumberToSet < 1 || columnNumberToSet > this.elements[0].length) {
       /* eslint-disable */
       alert("Matrix column, to set is out of range, please enter valid \
       column .");
@@ -161,331 +144,303 @@
       column .");
       /* eslint-enable */
 
-      return null;
-    }
-    numberOfElements = this.elements.length;
-    for (var row = 0; row < numberOfElements; row++) {
-      this.elements[row][columnNumberToSet-1] =
-      replacementColumn[row];
-    }
-  },
-
-  this.getColumn = function(columnNumberToGet) {
-    if (this.elements.length === 0) {
-      /* eslint-disable */
-     alert('Matrix (col) is empty. Select a matrix with content.');
-     console.log('Matrix (col) is empty. Select a matrix with content.');
-     /* eslint-enable */
-
-     return null;
-    }
-    if (columnNumberToGet < 1 || columnNumberToGet > this.elements[0].length) {
-       /* eslint-disable */
-     alert('Matrix column, to return, is out of range, please enter valid \
-     column .');
-     console.log('Matrix column, to return, is out of range, please enter \
-     valid column .');
-     /* eslint-enable */
-
-     return null;
-    }
-    var columnToReturn = [], columnLength = this.elements.length;
-    for (var i = 0; i < columnLength; i++)
-    {
-      columnToReturn.push(this.elements[i][columnNumberToGet-1]);
-    }
-    return columnToReturn;
-  },
-
-  // delete column function here
-
-  this.numberOfRows = function() {
-    return this.elements.length;
-  },
-
-  this.numberOfColumns = function() {
-    if (this.elements.length === 0)
-    {
-      return 0;
-    }
-    return this.elements[0].length;
-  },
-
-  this.duplicateMatrix = function() {
-    var newOne = N1.MathLib.BinaryMatrix.NewOne(this.elements);
-    return newOne;
-  },
-
-  this.isSameSizeAs = function(matrix) {
-    var tempMatrix = matrix.elements || matrix;
-    if (typeof(tempMatrix[0][0]) === 'undefined')
-    {
-      tempMatrix = bm.new_one(tempMatrix).elements;
-    }
-    if (this.elements.length === 0)
-    {
-      return tempMatrix.length === 0;
-    }
-    return (this.elements.length === tempMatrix.length &&
-        this.elements[0].length === tempMatrix[0].length);
-  },
-
-  this.mapProcess = function(procFunction, context) {
-    if (this.elements.length === 0)
-    {
-      return N1.MathLib.BinaryVector.newOne([]);
-    }
-    var elements = [];
-    var numberOfRows = this.elements.length;
-    var numberOfColumns = this.elements[0].length;
-    var tempNumberOfColumns;
-    while (numberOfRows--) {
-      tempNumberOfColumns = numberOfColumns;
-      elements[numberOfRows] = [];
-      while (tempNumberOfColumns--) {
-        elements[numberOfRows][tempNumberOfColumns] = procFunction.call(context, /* changed numberOfColumns to tempNumberOfColumns */
-        this.elements[numberOfRows][tempNumberOfColumns], numberOfRows + 1,
-        tempNumberOfColumns + 1);
+        return null
       }
-    }
+      numberOfElements = this.elements.length
+      for (var row1 = 0; row1 < numberOfElements; row1++) {
+        this.elements[row1][columnNumberToSet - 1] =
+        replacementColumn[row1]
+      }
+    },
 
-      return N1.MathLib.BinaryMatrix.NewOne(elements);
-  },
+    this.getColumn = function (columnNumberToGet) {
+      if (this.elements.length === 0) {
+      /* eslint-disable */
+      alert('Matrix (col) is empty. Select a matrix with content.')
+      console.log('Matrix (col) is empty. Select a matrix with content.')
+      /* eslint-enable */
 
-  /* need to update the add function for binary numbers */
-  this.add = function(matrix) {
-    if (this.elements.length === 0)
-    {
-      return this.mapProcess(function(value)
-      {
-        return value;
-      });
-    }
-    var tempMatrix = matrix.elements || matrix;
-    if (typeof(tempMatrix[0][0]) === 'undefined')
-    {
-      tempMatrix = bm.new_one(tempMatrix).elements;
-    }
-    if (!this.isSameSizeAs(tempMatrix))
-    {
-      return null;
-    }
-    return this.mapProcess(function(value, row, column)
-    {
-      return value + tempMatrix[row-1][column-1];
-    });
-  },
-  // preprocess rows before adding color rows (maybe not??)
-  // preprocess to remove rowTwo self referencing red cell
-  this.addColorRows = function (rowOne, rowTwo) { // check logic in color add ...
-    console.log('add color row one is: ' + rowOne.view())
-    console.log('add color row two is: ' + rowTwo.view())
-    if(rowOne.length <= 0) {  // write a small performance spec..
-      return null
-    } else if (rowTwo.length <= 0) {
-      return null
-    } else if (rowOne.length != rowTwo.length) {
-      return null
-    } else {
-      var tempColorRow = N1.MathLib.BinaryVector.Zero(rowOne.elements.length)
-      var i
-      for(i = 0; i < rowOne.elements.length; i++) {
-        if((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 1) ) {
-          tempColorRow.setElement(i + 1, 1)
-        } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 2)) {
-          tempColorRow.setElement(i + 1, 2)
-        } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 3)) {
-          tempColorRow.setElement(i + 1, 3)
-        } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 5)) {
-          tempColorRow.setElement(i + 1, 5)
-        } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 1)) {
-          tempColorRow.setElement(i + 1, 2)
-        } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 2)) {
-          tempColorRow.setElement(i + 1, 2)
-        } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 3)) {
-          tempColorRow.setElement(i + 1, 3)
-        } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 3)) {
-          tempColorRow.setElement(i + 1, 3)
-        } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 5)) {
-          tempColorRow.setElement(i + 1, 5)
+        return null
+      }
+      if (columnNumberToGet < 1 || columnNumberToGet > this.elements[0].length) {
+       /* eslint-disable */
+       alert('Matrix column, to return, is out of range, please enter valid \
+       column .');
+       console.log('Matrix column, to return, is out of range, please enter \
+       valid column .');
+      /* eslint-enable */
+
+        return null
+      }
+      var columnToReturn = []
+      var columnLength = this.elements.length
+      for (var i = 0; i < columnLength; i++) {
+        columnToReturn.push(this.elements[i][columnNumberToGet - 1])
+      }
+      return columnToReturn
+    },
+
+    // delete column function here
+    this.numberOfRows = function () {
+      return this.elements.length
+    },
+
+    this.numberOfColumns = function () {
+      if (this.elements.length === 0) {
+        return 0
+      }
+      return this.elements[0].length
+    },
+
+    this.duplicateMatrix = function () {
+      var newOne = N1.MathLib.BinaryMatrix.NewOne(this.elements)
+      return newOne
+    },
+
+    this.isSameSizeAs = function (matrix) {
+      var tempMatrix = matrix.elements || matrix
+      if (typeof (tempMatrix[0][0]) === 'undefined') {
+        tempMatrix = N1.MathLib.BinaryMatrix.NewOne(tempMatrix).elements
+      }
+      if (this.elements.length === 0) {
+        return tempMatrix.length === 0
+      }
+      return (this.elements.length === tempMatrix.length &&
+        this.elements[0].length === tempMatrix[0].length)
+    },
+
+    this.mapProcess = function (procFunction, context) {
+      if (this.elements.length === 0) {
+        return N1.MathLib.BinaryVector.NewOne([])
+      }
+      var elements = []
+      var numberOfRows = this.elements.length
+      var numberOfColumns = this.elements[0].length
+      var tempNumberOfColumns
+      while (numberOfRows--) {
+        tempNumberOfColumns = numberOfColumns
+        elements[numberOfRows] = []
+        while (tempNumberOfColumns--) {
+          elements[numberOfRows][tempNumberOfColumns] = procFunction.call(context,
+        this.elements[numberOfRows][tempNumberOfColumns], numberOfRows + 1,
+        tempNumberOfColumns + 1)
         }
       }
-      // console.log('return tempColorRow is: ' + tempColorRow.view())
-      return tempColorRow
+
+      return N1.MathLib.BinaryMatrix.NewOne(elements)
+    },
+
+    /* need to update the add function for binary numbers */
+    this.add = function (matrix) {
+      if (this.elements.length === 0) {
+        return this.mapProcess(function (value) {
+          return value
+        })
+      }
+      var tempMatrix = matrix.elements || matrix
+      if (typeof (tempMatrix[0][0]) === 'undefined') {
+        tempMatrix = N1.MathLib.BinaryMatrix.NewOne(tempMatrix).elements
+      }
+      if (!this.isSameSizeAs(tempMatrix)) {
+        return null
+      }
+      return this.mapProcess(function (value, row, column) {
+        return value + tempMatrix[row - 1][column - 1]
+      })
+    },
+    // preprocess rows before adding color rows (maybe not??)
+    // preprocess to remove rowTwo self referencing red cell
+    this.addColorRows = function (rowOne, rowTwo) { // check logic in color add ...
+    // console.log('add color row one is: ' + rowOne.view())
+    // console.log('add color row two is: ' + rowTwo.view())
+      if (rowOne.length <= 0) {  // write a small performance spec..
+        return null
+      } else if (rowTwo.length <= 0) {
+        return null
+      } else if (rowOne.length !== rowTwo.length) {
+        return null
+      } else {
+        var tempColorRow = N1.MathLib.BinaryVector.Zero(rowOne.elements.length)
+        var i
+        for (i = 0; i < rowOne.elements.length; i++) {
+          if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 1)) {
+            tempColorRow.setElement(i + 1, 1)
+          } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 2)) {
+            tempColorRow.setElement(i + 1, 2)
+          } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 3)) {
+            tempColorRow.setElement(i + 1, 3)
+          } else if ((rowOne.element(i + 1) === 1) && (rowTwo.element(i + 1) === 5)) {
+            tempColorRow.setElement(i + 1, 5)
+          } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 1)) {
+            tempColorRow.setElement(i + 1, 2)
+          } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 2)) {
+            tempColorRow.setElement(i + 1, 2)
+          } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 3)) {
+            tempColorRow.setElement(i + 1, 3)
+          } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 3)) {
+            tempColorRow.setElement(i + 1, 3)
+          } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 5)) {
+            tempColorRow.setElement(i + 1, 5)
+          }
+        }
+        return tempColorRow
+      }
+    },
+
+    this.addTextRows = function (rowOne, rowTwo) {
+      // console.log('add text row one is: ' + rowOne.view())
+      // console.log('add text row two is: ' + rowTwo.view())
+      if (rowOne.elements.length <= 0) {
+        return null
+      } else if (rowTwo.elements.length <= 0) {
+        return null
+      } else if (rowOne.elements.length !== rowTwo.elements.length) {
+        return null
+      } else {
+        var tempTextRow = N1.MathLib.BinaryVector.Zero(rowOne.elements.length)
+        var i
+        for (i = 0; i < rowOne.elements.length; i++) {
+          tempTextRow.setElement(i + 1, (rowOne.element(i + 1) + rowTwo.element(i + 1)))
+          if (tempTextRow.element(i + 1) > 1) {
+            tempTextRow.setElement(i + 1, 1)
+          }
+        }
+        // console.log('temp text row is: ' + tempTextRow.view())
+        return tempTextRow
+      }
+    },
+
+    this.subtract = function (matrix) {
+      if (this.elements.length === 0) {
+        return this.mapProcess(function (value) {
+          return value
+        })
+      }
+      var tempMatrix = matrix.elements || matrix
+      if (typeof (tempMatrix[0][0]) === 'undefined') {
+        tempMatrix = N1.MathLib.BinaryMatrix.new_one(tempMatrix).elements
+      }
+      if (!this.isSameSizeAs(tempMatrix)) {
+        return null
+      }
+      return this.mapProcess(function (value, row, column) {
+        return value - tempMatrix[row - 1][column - 1]
+      })
+    },
+
+    this.leftMultiply = function (binaryMatrix) {
+      /* need to think about this one */
+      if (this.elements.length === 0) {
+        return false
+      }
+      var tempMatrix = binaryMatrix.elements || binaryMatrix
+      if (typeof (tempMatrix[0][0]) === 'undefined') {
+        tempMatrix = N1.MathLib.BinaryMatrix.new_one.new_one(tempMatrix).elements
+      }
+      return (this.elements[0].length === tempMatrix.length)
+    },
+
+    this.boolMultiply = function (binaryMatrix) {
+      if (this.elements.length === 0) {
+        return null
+      }
+      if (!binaryMatrix.elements) {
+        return this.mapProcess(function (value) {
+          return value * binaryMatrix
+        })
+      }
+      var returnVector = binaryMatrix.modulus ? true : false
+      var tempMatrix = binaryMatrix.elements || binaryMatrix
+      if (typeof (tempMatrix[0][0]) === 'undefined') {
+        tempMatrix = N1.MathLib.BinaryMatrix.new_one(tempMatrix).elements
+      }
+      if (!this.leftMultiply(tempMatrix)) {
+        return null
+      }
+      var rowLength = this.elements.length
+      var tempMatrixColumnLength = tempMatrix[0].length
+      var tempColumnValue
+      var columns = this.elements[0].length
+      var tempC
+      var elements = []
+      var sum
+      while (rowLength--) {
+        tempColumnValue = tempMatrixColumnLength
+        elements[rowLength] = []
+        while (tempColumnValue--) {
+          tempC = columns
+          sum = 0
+          while (tempC--) {
+            sum += this.elements[rowLength][tempC] * tempMatrix[tempC][tempColumnValue]
+          }
+          if (sum === 0) {
+            elements[rowLength][tempColumnValue] = 0
+          }
+          if (sum !== 0) {
+            elements[rowLength][tempColumnValue] = 1
+          }
+        }
+      }
+      var newMatrix = N1.MathLib.BinaryMatrix.NewOne(elements)
+      return returnVector ? newMatrix.getColumn(1) : newMatrix
+    },
+
+    this.matrixView = function () {
+      var matrixRows = []
+      var elementsLength = this.elements.length
+      if (elementsLength === 0) return '[]'
+      for (var row = 0; row < elementsLength; row++) {
+        matrixRows.push(N1.MathLib.BinaryVector.NewOne(this.elements[row]).view())
+      }
+      return matrixRows.join('<br>')
     }
   }
 
-  this.addTextRows = function (rowOne, rowTwo) {
-    // console.log('add text row one is: ' + rowOne.view())
-    // console.log('add text row two is: ' + rowTwo.view())
-    if(rowOne.elements.length <= 0) {
-      return null
-    } else if (rowTwo.elements.length <= 0) {
-      return null
-    } else if (rowOne.elements.length !== rowTwo.elements.length) {
-      return null
-    } else {
-    var tempTextRow = N1.MathLib.BinaryVector.Zero(rowOne.elements.length)
-    var i
-    for(i = 0; i < rowOne.elements.length; i++) {
-      tempTextRow.setElement(i + 1, (rowOne.element(i + 1) + rowTwo.element(i + 1)))
-      if(tempTextRow.element(i + 1) > 1) {
-        tempTextRow.setElement(i + 1, 1)
+  N1.MathLib.BinaryMatrix.NewOne = function (elements) {
+    var bm = new N1.MathLib.BinaryMatrix()
+
+    return bm.setElements(elements)
+  }
+
+  N1.MathLib.BinaryMatrix.One = function (size) {
+    var elements = []
+    var rowIndex
+    var columnIndex
+    for (rowIndex = 0; rowIndex < size; rowIndex++) {
+      elements[rowIndex] = []
+      for (columnIndex = 0; columnIndex < size; columnIndex++) {
+        elements[rowIndex][columnIndex] = 1
       }
     }
-    console.log('temp text row is: ' + tempTextRow.view())
-    return tempTextRow
+    var bm = new N1.MathLib.BinaryMatrix()
+    return bm.setElements(elements)
+  }
+
+  N1.MathLib.BinaryMatrix.Zero = function (size) {
+    var elements = []
+    var rowIndex
+    var columnIndex
+    for (rowIndex = 0; rowIndex < size; rowIndex++) {
+      elements[rowIndex] = []
+      for (columnIndex = 0; columnIndex < size; columnIndex++) {
+        elements[rowIndex][columnIndex] = 0
+      }
     }
+    var bm = new N1.MathLib.BinaryMatrix()
+    return bm.setElements(elements)
   }
 
-  this.subtract = function(matrix) {
-   if (this.elements.length === 0)
-   {
-     return this.mapProcess(function(value)
-     {
-       return value;
-     });
-   }
-   var tempMatrix = matrix.elements || matrix;
-   if (typeof(tempMatrix[0][0]) === 'undefined')
-   {
-     tempMatrix = N1.MathLib.BinaryMatrix.new_one(tempMatrix).elements;
-   }
-   if (!this.isSameSizeAs(tempMatrix))
-   {
-     return null;
-   }
-   return this.mapProcess(function(value, row, column)
-   {
-     return value - tempMatrix[row-1][column-1];
-   });
- },
-
- this.leftMultiply = function(binary_matrix) {
-   /* need to think about this one */
-  if (this.elements.length === 0)
-  {
-    return false;
-  }
-  var tempMatrix = binary_matrix.elements || binary_matrix;
-  if (typeof(tempMatrix[0][0]) === 'undefined')
-  {
-    tempMatrix = N1.MathLib.BinaryMatrix.new_one.new_one(tempMatrix).elements;
-  }
-  return (this.elements[0].length === tempMatrix.length);
-},
-
-this.boolMultiply = function(binary_matrix) {
- if (this.elements.length === 0)
- {
-   return null;
- }
- if (!binary_matrix.elements) {
-   return this.mapProcess(function(value)
-   {
-     return value * binary_matrix;
-   });
- }
- var returnVector = binary_matrix.modulus ? true : false;
- var tempMatrix = binary_matrix.elements || binary_matrix;
- if (typeof(tempMatrix[0][0]) === 'undefined')
- {
-   tempMatrix = N1.MathLib.BinaryMatrix.new_one(tempMatrix).elements;
- }
- if (!this.leftMultiply(tempMatrix))
- {
-   return null;
- }
- var rowLength = this.elements.length;
- var tempMatrixColumnLength = tempMatrix[0].length;
- var tempColumnValue;
- var columns = this.elements[0].length;
- var tempC;
- var elements = [];
- var sum;
- while (rowLength--)
- {
-   tempColumnValue = tempMatrixColumnLength;
-   elements[rowLength] = [];
-   while (tempColumnValue--)
-   {
-     tempC = columns;
-     sum = 0;
-     while (tempC--) {
-       sum += this.elements[rowLength][tempC] * tempMatrix[tempC][tempColumnValue];
-     }
-     if(sum === 0)
-     {
-       elements[rowLength][tempColumnValue] = 0;
-     }
-     if(sum !== 0)
-     {
-       elements[rowLength][tempColumnValue] = 1;
-     }
-   }
- }
- var newMatrix = N1.MathLib.BinaryMatrix.NewOne(elements);
- return returnVector ? newMatrix.getColumn(1) : newMatrix;
-},
-
-this.matrixView = function() {
- var matrix_rows = [];
- var elementsLength = this.elements.length;
- if (elementsLength === 0) return '[]';
- for (var row = 0; row < elementsLength; row++) {
-   matrix_rows.push(N1.MathLib.BinaryVector.NewOne(this.elements[row]).view());
- }
- return matrix_rows.join('<br>');
-}
-
-
-},
-
-N1.MathLib.BinaryMatrix.NewOne = function(elements) {
-  var bm = new N1.MathLib.BinaryMatrix();
-
-  return bm.setElements(elements);
-},
-
-N1.MathLib.BinaryMatrix.One = function(size) {
-  var elements = [];
-  var rowIndex;
-  var columnIndex;
-  for(rowIndex = 0; rowIndex < size; rowIndex++){
-    elements[rowIndex] = [];
-    for(columnIndex = 0; columnIndex < size; columnIndex++){
-      elements[rowIndex][columnIndex] = 1;
+  N1.MathLib.BinaryMatrix.Id = function (size) {
+    var elements = []
+    var rowIndex
+    var columnIndex
+    for (rowIndex = 0; rowIndex < size; rowIndex++) {
+      elements[rowIndex] = []
+      for (columnIndex = 0; columnIndex < size; columnIndex++) {
+        elements[rowIndex][columnIndex] = (rowIndex === columnIndex) ? 1 : 0
+      }
     }
+    var bm = new N1.MathLib.BinaryMatrix()
+    return bm.setElements(elements)
   }
-  var bm = new N1.MathLib.BinaryMatrix();
-  return bm.setElements(elements);
-},
-N1.MathLib.BinaryMatrix.Zero = function (size) {
-  var elements = [];
-  var rowIndex;
-  var columnIndex;
-  for(rowIndex = 0; rowIndex < size; rowIndex++){
-    elements[rowIndex] = [];
-    for(columnIndex = 0; columnIndex < size; columnIndex++){
-      elements[rowIndex][columnIndex] = 0;
-    }
-  }
-  var bm = new N1.MathLib.BinaryMatrix();
-  return bm.setElements(elements);
-},
-
-N1.MathLib.BinaryMatrix.Id = function(size) {
-  var elements = [];
-  var rowIndex;
-  var columnIndex;
-  for(rowIndex = 0; rowIndex < size; rowIndex++){
-    elements[rowIndex] = [];
-    for(columnIndex = 0; columnIndex < size; columnIndex++){
-      elements[rowIndex][columnIndex] = (rowIndex === columnIndex) ? 1 : 0;
-    }
-  }
-  var bm = new N1.MathLib.BinaryMatrix();
-  return bm.setElements(elements);
-}
-
-}());
+}())

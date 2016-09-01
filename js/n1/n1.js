@@ -1,4 +1,4 @@
-/* global _, $, Backbone, N1 */
+/* global _, $, Backbone, N1 , n1*/
 // Model class for each structure
 
 // View class for displaying each structure list item
@@ -35,45 +35,6 @@ var StructuresListView = Backbone.View.extend({
   },
 
   render: function () {
-    //var $list = this.$('ul.structure-list').empty()
-
-    this.collection.each(function (model) {
-      //var item = new StructuresListItemView({model: model})
-      var item = new StructuresInputView({model: model})
-      //$list.append(item.render().$el)
-      item.render().$el
-    }, this)
-
-    return this
-  },
-
-  events: {
-    'click .create': 'onCreate'
-  },
-
-  onCreate: function () {
-    var $size = this.$('#matrix-size')
-
-    if ($size.val()) {
-      this.collection.create({
-        size: $size.val()
-      })
-
-      $size.val('')
-      this.$('#structure-create').hide()
-    }
-  }
-})
-/*
-// View class for entering initial matrix size
-var StructuresInitialView = Backbone.View.extend({
-  el: '#n1-app',
-
-  initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render)
-  },
-
-  render: function () {
     this.collection.each(function (model) {
       var item = new StructuresInputView({model: model})
       item.render().$el
@@ -99,7 +60,6 @@ var StructuresInitialView = Backbone.View.extend({
     }
   }
 })
-*/
 
 // View class for displaying structure input items
 var StructuresInputView = Backbone.View.extend({
