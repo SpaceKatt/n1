@@ -307,8 +307,8 @@
     tempGridText = tempGridText.add(textInferred)
     n1.gridColor = tempGridColor
     n1.gridText = tempGridText
-    console.log('inf n1.gridColor is: ' + n1.gridColor.matrixView())
-    console.log('inf n1.gridText is: ' + n1.gridText.matrixView())
+    // console.log('inf n1.gridColor is: ' + n1.gridColor.matrixView())
+    // console.log('inf n1.gridText is: ' + n1.gridText.matrixView())
 
     // end utility function here....
   }
@@ -375,8 +375,8 @@
 
     n1.gridColor = tempGridColorSwap
     n1.gridText = tempGridTextSwap
-    console.log('swap n1.gridColor is: ' + n1.gridColor.matrixView())
-    console.log('swap n1.gridText is: ' + n1.gridText.matrixView())
+    // console.log('swap n1.gridColor is: ' + n1.gridColor.matrixView())
+    // console.log('swap n1.gridText is: ' + n1.gridText.matrixView())
 
 
     // ############## draw code here ########
@@ -484,41 +484,41 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   rcTwoIndex = (n1.vNames.indexOf(rcTwo))
   n1.vNames.deleteElement(rcTwoIndex)
   tempRowOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcOneIndex))
-  console.log('tempRowOneColor is: ' + tempRowOneColor.view())
+  // console.log('tempRowOneColor is: ' + tempRowOneColor.view())
 
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
-  console.log('tempRowTwoColor is: ' + tempRowTwoColor.view())
+  // console.log('tempRowTwoColor is: ' + tempRowTwoColor.view())
 
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
-  console.log('tempRowOneColor (2) is: ' + tempRowOneColor.view())
+  // console.log('tempRowOneColor (2) is: ' + tempRowOneColor.view())
   // need to set temp color row into gridColor matrix
-  console.log('same n1.gridColor before setRow is: ' + n1.gridColor.matrixView())
-  console.log('tempRowOneColor (3) is: ' + tempRowOneColor.view())
+  // console.log('same n1.gridColor before setRow is: ' + n1.gridColor.matrixView())
+  // console.log('tempRowOneColor (3) is: ' + tempRowOneColor.view())
 
   n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
-  console.log('same n1.gridColor after setRow is: ' + n1.gridColor.matrixView())
-  console.log('rcTwoIndex is: ' + rcTwoIndex)
+  // console.log('same n1.gridColor after setRow is: ' + n1.gridColor.matrixView())
+  // console.log('rcTwoIndex is: ' + rcTwoIndex)
 
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
   console.log('same n1.gridColor (up front) is: ' + n1.gridColor.matrixView())
 
   tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
-  console.log('tempRowOneText is: ' + tempRowOneText.view())
+  // console.log('tempRowOneText is: ' + tempRowOneText.view())
 
   tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
-  console.log('tempRowTwoText is: ' + tempRowTwoText.view())
+  // console.log('tempRowTwoText is: ' + tempRowTwoText.view())
 
   tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
-  console.log('tempRowOneText (2) is: ' + tempRowOneText.view())
-  console.log('tempRowOneText (3) is: ' + tempRowOneText)
-  console.log('tempRowOneText (4) elements length is: ' + tempRowOneText.elements.length)
+  // console.log('tempRowOneText (2) is: ' + tempRowOneText.view())
+  // console.log('tempRowOneText (3) is: ' + tempRowOneText)
+  // console.log('tempRowOneText (4) elements length is: ' + tempRowOneText.elements.length)
   // need to set temp text row into gridText matrix
-  console.log('rcOneIndex is: ' + rcOneIndex)
+  // console.log('rcOneIndex is: ' + rcOneIndex)
   n1.gridText.setRow(rcOneIndex, tempRowOneText)
-  console.log('n1.gridText is: ' + n1.gridText.matrixView())
+  // console.log('n1.gridText is: ' + n1.gridText.matrixView())
 
   // n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
-  // console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
+  console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
 
   n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRow(rcTwoIndex))
   console.log('same n1.gridText is: ' + n1.gridText.matrixView())

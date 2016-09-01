@@ -83,7 +83,7 @@
       var tempMo
       var tempMore
       console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
-      var deleteMatrixRowElements = []
+      // var deleteMatrixRowElements = []
       var i
       var flag1 = 1
       for(i = 0; i < deleteMatrixSize; i++) {
@@ -96,17 +96,21 @@
           console.log('flag1 is: ' + flag1)
           flag1 = flag1 + 1
         }
-
+      console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
       }
       // for(var j = 0; j < deleteMatrixRowElements.length; j++) {
       for(var j = 0; j < deleteMatrixObject.elements.length; j++) {
-
+        console.log('mo length is: ' + deleteMatrixObject.elements.length)
+        console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
         console.log('j is: ' + j)
         // deleteMatrixRowElements[j].splice((rowNumberToDelete - 1), 1)
         tempMo = deleteMatrixObject.getRow(j + 1)
         console.log('mo view 1' + tempMo)
         tempMore = N1.MathLib.BinaryVector.NewOne(tempMo)
         console.log('vector view 1' + tempMore.view())
+        tempMo = tempMore.deleteElement(rowNumberToDelete)
+        console.log('mo view 111' + tempMo)
+        deleteMatrixObject.setRow(j+1, tempMo)
       }
       console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
       console.log('this.elements is: ' + this.matrixView())
