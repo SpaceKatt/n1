@@ -26,11 +26,7 @@
       }
       return this
     }
-    // sometimes the replacement row is handled as an plain object????
     this.setRow = function (rowNumberToReplace, replacementRow) {
-      //console.log('rowNumberToReplace is: ' + rowNumberToReplace )
-      //console.log('replacement row is: ' + replacementRow )
-
       if (this.elements.length === 0) {
         /* eslint-disable */
         alert('Matrix (row) is empty. Select a matrix with content.');
