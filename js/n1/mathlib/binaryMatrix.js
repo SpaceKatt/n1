@@ -79,44 +79,58 @@
         return null
       }
       var deleteMatrixSize = this.elements.length
-      var deleteMatrixObject = N1.MathLib.BinaryMatrix.Zero(deleteMatrixSize)
+      var deleteMatrixObject = N1.MathLib.BinaryMatrix.Zero(deleteMatrixSize - 1)
+      var tempMo
       console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
       var deleteMatrixRowElements = []
       var i
+      var flag1 = 1
       for(i = 0; i < deleteMatrixSize; i++) {
         if(i !== (rowNumberToDelete - 1)) {
           console.log('adding a row..' + i)
           console.log('this.getRow.. is ' + this.getRow(i + 1))
-          deleteMatrixObject.setRow(i + 1, this.getRow(i + 1))
+          deleteMatrixObject.setRow(flag1, this.getRow(i + 1))
           console.log('deleteMatrixObject is [**] 2: ' + deleteMatrixObject.matrixView())
-          console.log('this.elements is: ' + this.elements[0].toString())
-          console.log('this.elements is: ' + this.elements[1].toString())
-          console.log('this.elements is: ' + this.elements[2].toString())
-          console.log(N1.MathLib.BinaryVector.NewOne(this.elements[2]).view())
-          console.log('this.elements is: ' + this.elements[3].toString())
-          console.log('this.elements is: ' + this.elements.toString())
+          // console.log('this.elements is: ' + this.elements[0].toString())
+          // console.log('this.elements is: ' + this.elements[1].toString())
+          // console.log('this.elements is: ' + this.elements[2].toString())
+          // console.log(N1.MathLib.BinaryVector.NewOne(this.elements[2]).view())
+          // console.log('this.elements is: ' + this.elements[3].toString())
+          // console.log('this.elements is: ' + this.elements.toString())
           console.log('this.elements are: ' + this.matrixView())
-          deleteMatrixRowElements.push(this.getRow(i + 1))
+          // deleteMatrixRowElements.push(this.getRow(i + 1))
+          console.log('flag1 is: ' + flag1)
+          flag1 = flag1 + 1
         }
+        // console.log('flag1 is: ' + flag1)
+        // flag1 = flag1 + 1
+
       }
-      console.log('row delete ' + deleteMatrixRowElements.length)
-      console.log('row delete column length ' + deleteMatrixRowElements[0].length)
-      console.log('row delete column contents ' + deleteMatrixRowElements[0].toString())
-      console.log('row delete column contents ' + deleteMatrixRowElements[1].toString())
-      console.log('row delete column contents ' + deleteMatrixRowElements[1][0].toString())
-      console.log('row delete column contents ' + deleteMatrixRowElements[1][1].toString())
-      console.log('row delete column contents ' + deleteMatrixRowElements[2].toString())
+      // console.log('row delete ' + deleteMatrixRowElements.length)
+      // console.log('row delete column length ' + deleteMatrixRowElements[0].length)
+      // console.log('row delete column contents ' + deleteMatrixRowElements[0].toString())
+      // console.log('row delete column contents ' + deleteMatrixRowElements[1].toString())
+      // console.log('row delete column contents ' + deleteMatrixRowElements[1][0].toString())
+      // console.log('row delete column contents ' + deleteMatrixRowElements[1][1].toString())
+      // console.log('row delete column contents ' + deleteMatrixRowElements[2].toString())
       // deleteMatrixRowElements.forEach(element.splice((rowNumberToDelete - 1), 1))
       for(var j = 0; j < deleteMatrixRowElements.length; j++) {
-        console.log('delete row elements is: ' + deleteMatrixRowElements[0].length)
-        console.log('row delete column contents ' + deleteMatrixRowElements[j].toString())
-        console.log('row number to delete is: ' + (rowNumberToDelete - 1))
+        // console.log('delete row elements is: ' + deleteMatrixRowElements[0].length)
+        // console.log('row delete column contents ' + deleteMatrixRowElements[j].toString())
+        // console.log('row number to delete is: ' + (rowNumberToDelete - 1))
         console.log('j is: ' + j)
-        deleteMatrixRowElements[j].splice((rowNumberToDelete - 1), 1)
+        // deleteMatrixRowElements[j].splice((rowNumberToDelete - 1), 1)
+        tempMo = deleteMatrixObject.getRow(j + 1)
+        console.log('mo view 1' + tempMo)
+        console.log('mo view 2' + tempMo.toString())
+        // tempMo.splice((rowNumberToDelete - 1, 1))
+        console.log('mo view ' + tempMo.toString())
       }
-      console.log('this.elements is: ' + this.elements.matrixView())
-      console.log('row delete column length' + deleteMatrixRowElements[0].length)
-      return deleteMatrixRowElements
+      console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
+      console.log('this.elements is: ' + this.matrixView())
+      // console.log('row delete column length' + deleteMatrixRowElements[0].length)
+      // return deleteMatrixRowElements
+      return deleteMatrixObject.elements
     }
 
 
