@@ -77,19 +77,6 @@
     context.fillStyle = 'lightblue'
     context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
   }
-  /*
-  function enterLightBlueColor (x, y) {
-    n1.gridColor.setElement(x + 1, y + 1, 4)
-  } */
-  /*
-  function drawOrangeCell (x, y, canvas, context, cellSize) {
-    context.fillStyle = 'orange'
-    context.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1)
-  } */
-  /*
-  function enterOrangeColor (x, y) {
-    n1.gridColor.setE(x + 1, y + 1, 5)
-  } */
 
   function drawText (x, y, canvas, context, cellSize, gridText) {
     var text
@@ -99,20 +86,6 @@
     text = n1.gridText.getElement(x + 1, y + 1)
     context.fillText(text, (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
   }
-  /*
-  function drawText1 (x, y, canvas, context, cellSize) {
-    context.fillStyle = 'black'
-    context.font = '0.8em tahoma'
-    context.textAlign = 'center'
-    context.fillText('1', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
-  } */
-  /*
-  function drawText0 (x, y, canvas, context, cellSize) {
-    context.fillStyle = 'black'
-    context.font = '0.8em tahoma'
-    context.textAlign = 'center'
-    context.fillText('0', (((x + 1) * cellSize) - (cellSize / 2)), (((y + 1) * cellSize) - (cellSize / 4)))
-  } */
 
   N1.MathLib.GridTools.initGrid =	function initGrid (canvas, context, canvas1, context1, canvas2, context2, size) {
     var x
@@ -307,9 +280,6 @@
     tempGridText = tempGridText.add(textInferred)
     n1.gridColor = tempGridColor
     n1.gridText = tempGridText
-    // console.log('inf n1.gridColor is: ' + n1.gridColor.matrixView())
-    // console.log('inf n1.gridText is: ' + n1.gridText.matrixView())
-
     // end utility function here....
   }
   // #########################################################################
@@ -375,9 +345,6 @@
 
     n1.gridColor = tempGridColorSwap
     n1.gridText = tempGridTextSwap
-    // console.log('swap n1.gridColor is: ' + n1.gridColor.matrixView())
-    // console.log('swap n1.gridText is: ' + n1.gridText.matrixView())
-
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
@@ -487,41 +454,19 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   // console.log('tempRowOneColor is: ' + tempRowOneColor.view())
 
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
-  // console.log('tempRowTwoColor is: ' + tempRowTwoColor.view())
-
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
-  // console.log('tempRowOneColor (2) is: ' + tempRowOneColor.view())
-  // need to set temp color row into gridColor matrix
-  // console.log('same n1.gridColor before setRow is: ' + n1.gridColor.matrixView())
-  // console.log('tempRowOneColor (3) is: ' + tempRowOneColor.view())
-
   n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
-  // console.log('same n1.gridColor after setRow is: ' + n1.gridColor.matrixView())
-  // console.log('rcTwoIndex is: ' + rcTwoIndex)
-
-  n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
-  console.log('same n1.gridColor (up front) is: ' + n1.gridColor.matrixView())
+  n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRowAndColumn(rcTwoIndex))
+  //console.log('same n1.gridColor (up front) is: ' + n1.gridColor.matrixView())
 
   tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
-  // console.log('tempRowOneText is: ' + tempRowOneText.view())
-
   tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
-  // console.log('tempRowTwoText is: ' + tempRowTwoText.view())
-
   tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
-  // console.log('tempRowOneText (2) is: ' + tempRowOneText.view())
-  // console.log('tempRowOneText (3) is: ' + tempRowOneText)
-  // console.log('tempRowOneText (4) elements length is: ' + tempRowOneText.elements.length)
-  // need to set temp text row into gridText matrix
-  // console.log('rcOneIndex is: ' + rcOneIndex)
   n1.gridText.setRow(rcOneIndex, tempRowOneText)
-  // console.log('n1.gridText is: ' + n1.gridText.matrixView())
+  // console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
 
-  // n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
-  console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
-
-  n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRow(rcTwoIndex))
-  console.log('same n1.gridText is: ' + n1.gridText.matrixView())
+  n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRowAndColumn(rcTwoIndex))
+  // console.log('same n1.gridText is: ' + n1.gridText.matrixView())
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values

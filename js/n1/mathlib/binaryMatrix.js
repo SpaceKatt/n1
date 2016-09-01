@@ -42,7 +42,7 @@
 
         return null
       } else {
-        this.elements[rowNumberToReplace - 1] = replacementRow  // issue is here
+        this.elements[rowNumberToReplace - 1] = replacementRow
       }
     }
     this.getRow = function (rowNumberToGet) {
@@ -59,12 +59,11 @@
       return this.elements[rowNumberToGet - 1]
     }
 
-    // delete row function here
-    this.deleteRow = function (rowNumberToDelete) { // should be delteRowAndColumn
-      console.log('this.elements are (1): ' + this.matrixView())
-      console.log('Row number to delete is.. ' + rowNumberToDelete)
-      // var tempLength = this.elements.length
-      console.log('this elements length is.. ' + this.elements.length)
+    // delete row and column method here
+    this.deleteRowAndColumn = function (rowNumberToDelete) {
+      // console.log('this.elements are (1): ' + this.matrixView())
+      // console.log('Row number to delete is.. ' + rowNumberToDelete)
+      // console.log('this elements length is.. ' + this.elements.length)
       if (rowNumberToDelete < 1 || rowNumberToDelete > this.elements.length) {
       /* eslint-disable */
       alert('Matrix row, to delete, is out of range, please enter valid \
@@ -78,38 +77,31 @@
       var deleteMatrixObject = N1.MathLib.BinaryMatrix.Zero(deleteMatrixSize - 1)
       var tempMo
       var tempMore
-      console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
-      // var deleteMatrixRowElements = []
+      // console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
       var i
       var flag1 = 1
       for(i = 0; i < deleteMatrixSize; i++) {
         if(i !== (rowNumberToDelete - 1)) {
-          // console.log('adding a row..' + i)
-          // console.log('this.getRow.. is ' + this.getRow(i + 1))
           deleteMatrixObject.setRow(flag1, this.getRow(i + 1))
-          // console.log('deleteMatrixObject is [**] 2: ' + deleteMatrixObject.matrixView())
-          // console.log('this.elements are: ' + this.matrixView())
-          console.log('flag1 is: ' + flag1)
+          // console.log('flag1 is: ' + flag1)
           flag1 = flag1 + 1
         }
-      console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
+      // console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
       }
-      // for(var j = 0; j < deleteMatrixRowElements.length; j++) {
       for(var j = 0; j < deleteMatrixObject.elements.length; j++) {
-        console.log('mo length is: ' + deleteMatrixObject.elements.length)
-        console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
-        console.log('j is: ' + j)
-        // deleteMatrixRowElements[j].splice((rowNumberToDelete - 1), 1)
+        // console.log('mo length is: ' + deleteMatrixObject.elements.length)
+        // console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
+        // console.log('j is: ' + j)
         tempMo = deleteMatrixObject.getRow(j + 1)
-        console.log('mo view 1' + tempMo)
+        // console.log('mo view 1' + tempMo)
         tempMore = N1.MathLib.BinaryVector.NewOne(tempMo)
-        console.log('vector view 1' + tempMore.view())
+        // console.log('vector view 1' + tempMore.view())
         tempMo = tempMore.deleteElement(rowNumberToDelete)
-        console.log('mo view 111' + tempMo)
+        // console.log('mo view 111' + tempMo)
         deleteMatrixObject.setRow(j+1, tempMo)
       }
-      console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
-      console.log('this.elements is: ' + this.matrixView())
+      // console.log('deleteMatrixObject is [**] 3: ' + deleteMatrixObject.matrixView())
+      // console.log('this.elements is: ' + this.matrixView())
       // console.log('row delete column length' + deleteMatrixRowElements[0].length)
       // return deleteMatrixRowElements
       return deleteMatrixObject.elements
@@ -317,17 +309,15 @@
         } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 5)) {
           tempColorRow.setElement(i + 1, 5)
         }
-        // console.log('return tempColorRow is: ' + tempColorRow.view())
-        // return tempColorRow
       }
-      console.log('return tempColorRow is: ' + tempColorRow.view())
+      // console.log('return tempColorRow is: ' + tempColorRow.view())
       return tempColorRow
     }
   }
 
   this.addTextRows = function (rowOne, rowTwo) {
-    console.log('add text row one is: ' + rowOne.view())
-    console.log('add text row two is: ' + rowTwo.view())
+    // console.log('add text row one is: ' + rowOne.view())
+    // console.log('add text row two is: ' + rowTwo.view())
     if(rowOne.elements.length <= 0) {
       return null
     } else if (rowTwo.elements.length <= 0) {
