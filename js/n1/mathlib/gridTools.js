@@ -166,6 +166,9 @@
       n1.gridText.setElement(rcTwoIndex, rcOneIndex, 0)
       enterRedColor(rcTwoIndex - 1, rcOneIndex - 1)
       enterGreenColor(rcOneIndex - 1, rcTwoIndex - 1)
+      console.log('enter n1.gridColor is: ' + n1.gridColor.matrixView())
+      console.log('enter n1.gridText is: ' + n1.gridText.matrixView())
+
       // need to redraw the main canvas using text values
       // use the gridColor matrix
       for (ex = 0; ex < n1.size; ex++) {
@@ -304,6 +307,9 @@
     tempGridText = tempGridText.add(textInferred)
     n1.gridColor = tempGridColor
     n1.gridText = tempGridText
+    console.log('inf n1.gridColor is: ' + n1.gridColor.matrixView())
+    console.log('inf n1.gridText is: ' + n1.gridText.matrixView())
+
     // end utility function here....
   }
   // #########################################################################
@@ -312,96 +318,7 @@
   //   That are existing data in the grid (move city data )
   // #########################################################################
   // #########################################################################
-/*
-  function moveRC () {
-    var cellSize = 20
-    var moveOne = document.getElementById('moveOne').value
-    var moveTwo = document.getElementById('moveTwo').value
-    var canvas = document.getElementById('canvas-main')
-    var context = canvas.getContext('2d')
-    var canvas1 = document.getElementById('canvas-bottom')
-    var context1 = canvas1.getContext('2d')
-    var canvas2 = document.getElementById('canvas-left-side')
-    var context2 = canvas2.getContext('2d')
 
-    var tempRowOneColor
-    var tempRowTwoColor
-    var tempRowOneText
-    var tempRowTwoText
-
-    var tempColOneColor
-    var tempColTwoColor
-    var tempColOneText
-    var tempColTwoText
-
-    var tempGridColor
-    var tempGridText
-    var mx
-    var my
-    // var mi
-    var moveOneIndex
-    var moveTwoIndex
-
-    moveOneIndex = n1.vNames.indexOf(moveOne)
-    moveTwoIndex = n1.vNames.indexOf(moveTwo)
-
-    n1.vNames.setElement(moveTwoIndex, moveOne)
-    n1.vNames.setElement(moveOneIndex, moveTwo)
-
-    tempRowOneColor = n1.gridColor.row(moveOneIndex)
-    tempRowTwoColor = n1.gridColor.row(moveTwoIndex)
-    tempRowOneText = n1.gridText.row(moveOneIndex)
-    tempRowTwoText = n1.gridText.row(moveTwoIndex)
-
-    tempGridColor.setRow(moveTwoIndex, tempRowOneColor)
-    tempGridColor.setRow(moveOneIndex, tempRowTwoColor)
-    tempGridText.setRow(moveTwoIndex, tempRowOneText)
-    tempGridText.setRow(moveOneIndex, tempRowTwoText)
-
-    tempColOneColor = tempGridColor.col(moveOneIndex)
-    tempColTwoColor = tempGridColor.col(moveTwoIndex)
-    tempColOneText = tempGridText.col(moveOneIndex)
-    tempColTwoText = tempGridText.col(moveTwoIndex)
-
-    tempGridColor.setCol(moveTwoIndex, tempColOneColor)
-    tempGridColor.setCol(moveOneIndex, tempColTwoColor)
-    tempGridText.setCol(moveTwoIndex, tempColOneText)
-    tempGridText.setCol(moveOneIndex, tempColTwoText)
-
-    n1.gridColor = tempGridColor
-    n1.gridText = tempGridText
-
-    // ############## draw code here ########
-    // need to redraw the main canvas using text values
-    // use the gridColor matrix
-    for (mx = 0; mx < 19; mx++) {
-      var color
-      drawXGridCell(mx + 1, canvas1, context1, cellSize, n1.vNames) // added +1
-      for (my = 0; my < 19; my++) {
-        drawYGridCell(my + 1, canvas2, context2, cellSize, n1.vNames) // added +1
-        color = n1.gridColor.getElement(mx + 1, my + 1)
-        switch (color) {
-          case 1:
-            drawYellowCell(mx, my, canvas, context, cellSize)
-            break
-          case 2:
-            drawRedCell(mx, my, canvas, context, cellSize)
-            // alert ("Drawing red cell in the box swap function");
-            break
-          case 3:
-            drawGreenCell(mx, my, canvas, context, cellSize)
-            break
-          case 5:
-            drawLightBlueCell(mx, my, canvas, context, cellSize)
-            break
-        }
-        drawText(mx, my, canvas, context, cellSize, n1.gridText)
-      }
-    }
-    // ############# draw code end ###########
-    document.getElementById('moveData').style.display = 'none'
-  }
-  */
   // ##########################################################################
   // ##########################################################################
   //   Now build a function to swap the selected row and column pairs
@@ -458,6 +375,9 @@
 
     n1.gridColor = tempGridColorSwap
     n1.gridText = tempGridTextSwap
+    console.log('swap n1.gridColor is: ' + n1.gridColor.matrixView())
+    console.log('swap n1.gridText is: ' + n1.gridText.matrixView())
+
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
@@ -564,16 +484,44 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   rcTwoIndex = (n1.vNames.indexOf(rcTwo))
   n1.vNames.deleteElement(rcTwoIndex)
   tempRowOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcOneIndex))
+  console.log('tempRowOneColor is: ' + tempRowOneColor.view())
+
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
+  console.log('tempRowTwoColor is: ' + tempRowTwoColor.view())
+
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
-  tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
-  tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
-  tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
+  console.log('tempRowOneColor (2) is: ' + tempRowOneColor.view())
+  // need to set temp color row into gridColor matrix
+  console.log('same n1.gridColor before setRow is: ' + n1.gridColor.matrixView())
+  console.log('tempRowOneColor (3) is: ' + tempRowOneColor.view())
+
+  n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
+  console.log('same n1.gridColor after setRow is: ' + n1.gridColor.matrixView())
+  console.log('rcTwoIndex is: ' + rcTwoIndex)
 
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
-  n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRow(rcTwoIndex))
-  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  console.log('same n1.gridColor (up front) is: ' + n1.gridColor.matrixView())
+
+  tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
+  console.log('tempRowOneText is: ' + tempRowOneText.view())
+
+  tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
+  console.log('tempRowTwoText is: ' + tempRowTwoText.view())
+
+  tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
+  console.log('tempRowOneText (2) is: ' + tempRowOneText.view())
+  console.log('tempRowOneText (3) is: ' + tempRowOneText)
+  console.log('tempRowOneText (4) elements length is: ' + tempRowOneText.elements.length)
+  // need to set temp text row into gridText matrix
+  console.log('rcOneIndex is: ' + rcOneIndex)
+  n1.gridText.setRow(rcOneIndex, tempRowOneText)
   console.log('n1.gridText is: ' + n1.gridText.matrixView())
+
+  // n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRow(rcTwoIndex))
+  // console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
+
+  n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRow(rcTwoIndex))
+  console.log('same n1.gridText is: ' + n1.gridText.matrixView())
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values
