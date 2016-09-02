@@ -1,14 +1,14 @@
-/*global N1, n1, Backbone */
+/*global N1, Backbone */
 (function () {
   'use strict'
   // Stucture Model
   // ----------
-  var globalCounterId = 1;
+  var globalCounterId = 1
 
   N1.Models.Structure = Backbone.Model.extend({
     initialize: function () {
-        this.set('id', globalCounterId);
-        globalCounterId += 1;
+      this.set('id', globalCounterId)
+      globalCounterId += 1
     },
     defaults: function () {
       return {

@@ -1,6 +1,6 @@
 /* global suite, expect, N1, test, assert */
 suite('N1.MathLib.BinaryMatrix Factory methods', function () {
-  test('Creates the Identity Matrix', function() {
+  test('Creates the Identity Matrix', function () {
     var idMatrix = new N1.MathLib.BinaryMatrix.Id(3)
     var expectedElements = [[1, 0, 0],
         [0, 1, 0],
@@ -195,7 +195,7 @@ suite('N1.MathLib.BinaryMatrix Operation methods', function () {
     var univeralMatrix = N1.MathLib.BinaryMatrix.NewOne([[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]])
-    var otherMatrix =  N1.MathLib.BinaryMatrix.NewOne([[0, 1, 0],
+    var otherMatrix = N1.MathLib.BinaryMatrix.NewOne([[0, 1, 0],
         [1, 0, 1],
         [0, 1, 0]])
     var resultMatrix = univeralMatrix.subtract(otherMatrix)
@@ -230,7 +230,7 @@ suite('N1.MathLib.BinaryMatrix Operation methods', function () {
   })
 
   test('Matrix view valid', function () {
-    var matrix =  N1.MathLib.BinaryMatrix.NewOne([[0, 1, 0],
+    var matrix = N1.MathLib.BinaryMatrix.NewOne([[0, 1, 0],
         [0, 0, 1],
         [0, 1, 0]])
     var expectedView = '[0, 1, 0]<br>[0, 0, 1]<br>[0, 1, 0]'
