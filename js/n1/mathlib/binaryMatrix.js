@@ -345,6 +345,26 @@
       }
     },
 
+    this.addTextColumns = function (columnOne, columnTwo) {
+      if (columnOne.elements.length <= 0) {
+        return null
+      } else if (columnTwo.elements.length <= 0) {
+        return null
+      } else if (columnOne.elements.length !== columnTwo.elements.length) {
+        return null
+      } else {
+        var tempTextColumn = N1.MathLib.BinaryVector.Zero(columnOne.elements.length)
+        var i
+        for (i = 0; i < columnOne.elements.length; i++) {
+          tempTextColumn.setElement(i + 1, (columnOne.element(i + 1) + columnTwo.element(i + 1)))
+          if (tempTextColumn.element(i + 1) > 1) {
+            tempTextColumn.setElement(i + 1, 1)
+          }
+        }
+        return tempTextColumn
+      }
+    },
+
     this.subtract = function (matrix) {
       if (this.elements.length === 0) {
         return this.mapProcess(function (value) {
