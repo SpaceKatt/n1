@@ -249,7 +249,7 @@
       })
     },
     // preprocess rows before adding color rows (maybe not??)
-    // preprocess to remove rowTwo self referencing red cell
+    // preprocess to remove rowTwo self referencing red cell (not at this time)
     this.addColorRows = function (rowOne, rowTwo) { // check logic in color add ...
     // console.log('add color row one is: ' + rowOne.view())
     // console.log('add color row two is: ' + rowTwo.view())
@@ -284,6 +284,41 @@
           }
         }
         return tempColorRow
+      }
+    },
+
+    this.addColorColumns = function (columnOne, columnTwo) {
+      if (columnOne.length <= 0) {
+        return null
+      } else if (columnTwo.length <= 0) {
+        return null
+      } else if (columnOne.length !== columnTwo.length) {
+        return null
+      } else {
+        var tempColorColumn = N1.MathLib.BinaryVector.Zero(columnOne.elements.length)
+        var i
+        for (i = 0; i < columnOne.elements.length; i++) {
+          if ((columnOne.element(i + 1) === 1) && (columnTwo.element(i + 1) === 1)) {
+            tempColorColumn.setElement(i + 1, 1)
+          } else if ((columnOne.element(i + 1) === 1) && (columnTwo.element(i + 1) === 2)) {
+            tempColorColumn.setElement(i + 1, 2)
+          } else if ((columnOne.element(i + 1) === 1) && (columnTwo.element(i + 1) === 3)) {
+            tempColorColumn.setElement(i + 1, 3)
+          } else if ((columnOne.element(i + 1) === 1) && (columnTwo.element(i + 1) === 5)) {
+            tempColorColumn.setElement(i + 1, 5)
+          } else if ((columnOne.element(i + 1) === 2) && (columnTwo.element(i + 1) === 1)) {
+            tempColorColumn.setElement(i + 1, 2)
+          } else if ((columnOne.element(i + 1) === 2) && (columnTwo.element(i + 1) === 2)) {
+            tempColorColumn.setElement(i + 1, 2)
+          } else if ((columnOne.element(i + 1) === 2) && (columnTwo.element(i + 1) === 3)) {
+            tempColorColumn.setElement(i + 1, 3)
+          } else if ((columnOne.element(i + 1) === 2) && (columnTwo.element(i + 1) === 3)) {
+            tempColorColumn.setElement(i + 1, 3)
+          } else if ((columnOne.element(i + 1) === 2) && (columnTwo.element(i + 1) === 5)) {
+            tempColorColumn.setElement(i + 1, 5)
+          }
+        }
+        return tempColorColumn
       }
     },
 

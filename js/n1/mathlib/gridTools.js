@@ -456,6 +456,11 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
   n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
+  // get tempColumnOneColor
+  // get tempColumnTwoColor
+  // create from addColorColumns tempColumnOneColor
+  // setRow tempColumnOneColor
+
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRowAndColumn(rcTwoIndex))
   // console.log('same n1.gridColor (up front) is: ' + n1.gridColor.matrixView())
 
