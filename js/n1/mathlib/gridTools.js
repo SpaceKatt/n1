@@ -383,9 +383,13 @@
 
 N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
   var tempRowOneColor
+  var tempColumnOneColor
   var tempRowTwoColor
+  var tempColumnTwoColor
   var tempRowOneText
+  var tempColumnOneText
   var tempRowTwoText
+  var tempColumnTwoText
   var mx
   var my
   var rcOneIndex
@@ -450,28 +454,44 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   rcOneIndex = (n1.vNames.indexOf(rcOne))
   rcTwoIndex = (n1.vNames.indexOf(rcTwo))
   n1.vNames.deleteElement(rcTwoIndex)
+  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
   tempRowOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcOneIndex))
-  // console.log('tempRowOneColor is: ' + tempRowOneColor.view())
-
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
-  n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
+  // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  // n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
   // get tempColumnOneColor
+  tempColumnOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getColumn(rcOneIndex))
+  // console.log('tempColumnOneColor is: ' + tempColumnOneColor.view())
   // get tempColumnTwoColor
+  tempColumnTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getColumn(rcTwoIndex))
+  // console.log('tempColumnTwoColor is: ' + tempColumnTwoColor.view())
   // create from addColorColumns tempColumnOneColor
-  // setRow tempColumnOneColor
-
+  tempColumnOneColor = n1.gridColor.addColorColumns(tempColumnOneColor, tempColumnTwoColor)
+  // console.log('tempColumnOneColor is: ' + tempColumnOneColor.view())
+  // setColumn tempColumnOneColor
+  // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  n1.gridColor.setRow(rcOneIndex, tempRowOneColor)
+  // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  // console.log('tempColumnOneColor is: ' + tempColumnOneColor.view())
+  // console.log('rcOneIndex is: ' + rcOneIndex)
+  n1.gridColor.setColumn(rcOneIndex, tempColumnOneColor.elements)
+  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRowAndColumn(rcTwoIndex))
-  // console.log('same n1.gridColor (up front) is: ' + n1.gridColor.matrixView())
+  console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
 
   tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
   tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
   tempRowOneText = n1.gridText.addTextRows(tempRowOneText, tempRowTwoText)
   n1.gridText.setRow(rcOneIndex, tempRowOneText)
-  // console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
+  // get tempColumnOneText
+  // get tempColumnTwoText
+  // create from addTextColumns tempColumnOneText
+  // setRow tempColumnOneText
 
+  // console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
   n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRowAndColumn(rcTwoIndex))
-  // console.log('same n1.gridText is: ' + n1.gridText.matrixView())
+  //console.log('same n1.gridText is: ' + n1.gridText.matrixView())
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values

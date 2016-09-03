@@ -1,4 +1,4 @@
-/*global N1 */
+/*global N1, n1 */
 (function () {
   'use strict'
   N1.MathLib.BinaryMatrix = function BinaryMatrix () {
@@ -60,6 +60,7 @@
 
     // delete row and column method here
     this.deleteRowAndColumn = function (rowNumberToDelete) {
+      console.log('rowNumberToDelete is: ' + rowNumberToDelete)
       if (rowNumberToDelete < 1 || rowNumberToDelete > this.elements.length) {
       /* eslint-disable */
       alert('Matrix row, to delete, is out of range, please enter valid \
@@ -73,21 +74,32 @@
       var deleteMatrixObject = N1.MathLib.BinaryMatrix.Zero(deleteMatrixSize - 1)
       var tempMo
       var tempMore
-      // console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
+      console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
+      console.log('this.matrixView() is:' + this.matrixView())
       var i
       var flag1 = 1
       for (i = 0; i < deleteMatrixSize; i++) {
         if (i !== (rowNumberToDelete - 1)) {
           deleteMatrixObject.setRow(flag1, this.getRow(i + 1))
+           console.log('this.getRow( ' + (Number(i) + 1) + ') ' + this.getRow(i + 1).toString())
           flag1 = flag1 + 1
         }
       }
       for (var j = 0; j < deleteMatrixObject.elements.length; j++) {
         tempMo = deleteMatrixObject.getRow(j + 1)
         tempMore = N1.MathLib.BinaryVector.NewOne(tempMo)
-        tempMo = tempMore.deleteElement(rowNumberToDelete)
+        // console.log('tempMore is: ' + tempMore.view())
+        tempMo = tempMore.getElements()
+        // tempMo = tempMore.deleteElement(rowNumberToDelete)
+        // console.log('tempMo length is: ' + tempMo.length)
+        // console.log('tempMo is: ' + tempMo.toString())
+        console.log('rowNumberToDelete is: ' + rowNumberToDelete)
+        tempMo.splice(rowNumberToDelete - 1, 1)
+        console.log('tempMo ' + j + ' is: ' + tempMo.toString())
+        // console.log('tempMo length is: ' + tempMo.length)
         deleteMatrixObject.setRow(j + 1, tempMo)
       }
+      console.log('deleteMatrixObject view is: ' + deleteMatrixObject.matrixView())
       return deleteMatrixObject.elements
     }
 
@@ -119,13 +131,16 @@
       }
 
       return this.elements[row - 1][column - 1]
-    },
+    }
 
     this.setColumn = function (columnNumberToSet, replacementColumn) {
-      var elementsLength
-      var columnNumberToSet
+      // console.log('column number to set is: ' + columnNumberToSet)
+      // console.log('replacementColumn is:' + replacementColumn.toString())
+      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+      // var elementsLength
+      // var columnNumberToSet
       var numberOfElements
-      var row
+      // var row
       if (this.elements.length === 0) {
       /* eslint-disable */
       alert('Matrix column, to set, is out of range, matrix is empty. Select \
@@ -150,8 +165,10 @@
       for (var row1 = 0; row1 < numberOfElements; row1++) {
         this.elements[row1][columnNumberToSet - 1] =
         replacementColumn[row1]
+        // replacementColumn[row1]
       }
-    },
+      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+    }
 
     this.getColumn = function (columnNumberToGet) {
       if (this.elements.length === 0) {
@@ -178,24 +195,24 @@
         columnToReturn.push(this.elements[i][columnNumberToGet - 1])
       }
       return columnToReturn
-    },
+    }
 
     // delete column function here
     this.numberOfRows = function () {
       return this.elements.length
-    },
+    }
 
     this.numberOfColumns = function () {
       if (this.elements.length === 0) {
         return 0
       }
       return this.elements[0].length
-    },
+    }
 
     this.duplicateMatrix = function () {
       var newOne = N1.MathLib.BinaryMatrix.NewOne(this.elements)
       return newOne
-    },
+    }
 
     this.isSameSizeAs = function (matrix) {
       var tempMatrix = matrix.elements || matrix
@@ -207,7 +224,7 @@
       }
       return (this.elements.length === tempMatrix.length &&
         this.elements[0].length === tempMatrix[0].length)
-    },
+    }
 
     this.mapProcess = function (procFunction, context) {
       if (this.elements.length === 0) {
@@ -228,7 +245,7 @@
       }
 
       return N1.MathLib.BinaryMatrix.NewOne(elements)
-    },
+    }
 
     /* need to update the add function for binary numbers */
     this.add = function (matrix) {
@@ -247,12 +264,12 @@
       return this.mapProcess(function (value, row, column) {
         return value + tempMatrix[row - 1][column - 1]
       })
-    },
+    }
     // preprocess rows before adding color rows (maybe not??)
     // preprocess to remove rowTwo self referencing red cell (not at this time)
     this.addColorRows = function (rowOne, rowTwo) { // check logic in color add ...
-    // console.log('add color row one is: ' + rowOne.view())
-    // console.log('add color row two is: ' + rowTwo.view())
+    console.log('add color row one is: ' + rowOne.view())
+    console.log('add color row two is: ' + rowTwo.view())
       if (rowOne.length <= 0) {  // write a small performance spec..
         return null
       } else if (rowTwo.length <= 0) {
@@ -283,9 +300,10 @@
             tempColorRow.setElement(i + 1, 5)
           }
         }
+        console.log('temp color row is: ' + tempColorRow.view())
         return tempColorRow
       }
-    },
+    }
 
     this.addColorColumns = function (columnOne, columnTwo) {
       if (columnOne.length <= 0) {
@@ -318,9 +336,10 @@
             tempColorColumn.setElement(i + 1, 5)
           }
         }
+        // console.log('add column return is: ' + tempColorColumn.view())
         return tempColorColumn
       }
-    },
+    }
 
     this.addTextRows = function (rowOne, rowTwo) {
       // console.log('add text row one is: ' + rowOne.view())
@@ -343,7 +362,7 @@
         // console.log('temp text row is: ' + tempTextRow.view())
         return tempTextRow
       }
-    },
+    }
 
     this.addTextColumns = function (columnOne, columnTwo) {
       if (columnOne.elements.length <= 0) {
@@ -363,7 +382,7 @@
         }
         return tempTextColumn
       }
-    },
+    }
 
     this.subtract = function (matrix) {
       if (this.elements.length === 0) {
@@ -381,7 +400,7 @@
       return this.mapProcess(function (value, row, column) {
         return value - tempMatrix[row - 1][column - 1]
       })
-    },
+    }
 
     this.leftMultiply = function (binaryMatrix) {
       /* need to think about this one */
@@ -393,7 +412,7 @@
         tempMatrix = N1.MathLib.BinaryMatrix.new_one.new_one(tempMatrix).elements
       }
       return (this.elements[0].length === tempMatrix.length)
-    },
+    }
 
     this.boolMultiply = function (binaryMatrix) {
       if (this.elements.length === 0) {
@@ -438,7 +457,7 @@
       }
       var newMatrix = N1.MathLib.BinaryMatrix.NewOne(elements)
       return returnVector ? newMatrix.getColumn(1) : newMatrix
-    },
+    }
 
     this.matrixView = function () {
       var matrixRows = []
