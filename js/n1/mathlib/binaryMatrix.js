@@ -60,7 +60,7 @@
 
     // delete row and column method here
     this.deleteRowAndColumn = function (rowNumberToDelete) {
-      console.log('rowNumberToDelete is: ' + rowNumberToDelete)
+      // console.log('rowNumberToDelete is: ' + rowNumberToDelete)
       if (rowNumberToDelete < 1 || rowNumberToDelete > this.elements.length) {
       /* eslint-disable */
       alert('Matrix row, to delete, is out of range, please enter valid \
@@ -74,14 +74,14 @@
       var deleteMatrixObject = N1.MathLib.BinaryMatrix.Zero(deleteMatrixSize - 1)
       var tempMo
       var tempMore
-      console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
-      console.log('this.matrixView() is:' + this.matrixView())
+      // console.log('deleteMatrixObject is [**] 1: ' + deleteMatrixObject.matrixView())
+      // console.log('this.matrixView() is:' + this.matrixView())
       var i
       var flag1 = 1
       for (i = 0; i < deleteMatrixSize; i++) {
         if (i !== (rowNumberToDelete - 1)) {
           deleteMatrixObject.setRow(flag1, this.getRow(i + 1))
-           console.log('this.getRow( ' + (Number(i) + 1) + ') ' + this.getRow(i + 1).toString())
+           // console.log('this.getRow( ' + (Number(i) + 1) + ') ' + this.getRow(i + 1).toString())
           flag1 = flag1 + 1
         }
       }
@@ -93,13 +93,13 @@
         // tempMo = tempMore.deleteElement(rowNumberToDelete)
         // console.log('tempMo length is: ' + tempMo.length)
         // console.log('tempMo is: ' + tempMo.toString())
-        console.log('rowNumberToDelete is: ' + rowNumberToDelete)
+        // console.log('rowNumberToDelete is: ' + rowNumberToDelete)
         tempMo.splice(rowNumberToDelete - 1, 1)
-        console.log('tempMo ' + j + ' is: ' + tempMo.toString())
+        // console.log('tempMo ' + j + ' is: ' + tempMo.toString())
         // console.log('tempMo length is: ' + tempMo.length)
         deleteMatrixObject.setRow(j + 1, tempMo)
       }
-      console.log('deleteMatrixObject view is: ' + deleteMatrixObject.matrixView())
+      // console.log('deleteMatrixObject view is: ' + deleteMatrixObject.matrixView())
       return deleteMatrixObject.elements
     }
 
@@ -268,8 +268,8 @@
     // preprocess rows before adding color rows (maybe not??)
     // preprocess to remove rowTwo self referencing red cell (not at this time)
     this.addColorRows = function (rowOne, rowTwo) { // check logic in color add ...
-    console.log('add color row one is: ' + rowOne.view())
-    console.log('add color row two is: ' + rowTwo.view())
+    // console.log('add color row one is: ' + rowOne.view())
+    // console.log('add color row two is: ' + rowTwo.view())
       if (rowOne.length <= 0) {  // write a small performance spec..
         return null
       } else if (rowTwo.length <= 0) {
@@ -300,7 +300,7 @@
             tempColorRow.setElement(i + 1, 5)
           }
         }
-        console.log('temp color row is: ' + tempColorRow.view())
+        // console.log('temp color row is: ' + tempColorRow.view())
         return tempColorRow
       }
     }

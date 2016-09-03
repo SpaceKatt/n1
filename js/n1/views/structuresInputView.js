@@ -49,9 +49,9 @@
       var rcTwo = n1.rowNumber
       // console.log($('#entries-equal').val())
       if($('#entries-equal').val() === 'N') {
-        console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+        // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
         N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
-        console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+        // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
         this.$('#enter-swap').show()
         this.$('#enter-infer').show()
       } else {
@@ -70,8 +70,8 @@
         this.$('#canvas-vector').show()
         $('#canvas-vector').prop('width', Number(n1.size * 20))
         $('#canvas-vector').prop('height', Number(20))
-        this.$('#enter-swap').hide()
-        this.$('#enter-infer').hide()
+        this.$('#enter-swap').show()
+        this.$('#enter-infer').show()
         // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
         N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
         // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())

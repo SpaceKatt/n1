@@ -476,9 +476,9 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   // console.log('tempColumnOneColor is: ' + tempColumnOneColor.view())
   // console.log('rcOneIndex is: ' + rcOneIndex)
   n1.gridColor.setColumn(rcOneIndex, tempColumnOneColor.elements)
-  console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
   n1.gridColor = N1.MathLib.BinaryMatrix.NewOne(n1.gridColor.deleteRowAndColumn(rcTwoIndex))
-  console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
+  // console.log('same n1.gridColor is: ' + n1.gridColor.matrixView())
 
   tempRowOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcOneIndex))
   tempRowTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getRow(rcTwoIndex))
