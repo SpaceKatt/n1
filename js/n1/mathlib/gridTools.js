@@ -4,7 +4,7 @@
   // initialize the window with a blank canvas
   // and data input area..
   N1.MathLib.GridTools.initHandler = function initHandler (size) {
-    n1.vectorGrid = []
+    n1.vectorGrid = new N1.MathLib.BinaryMatrix.Zero(1)
     n1.gridText = new N1.MathLib.BinaryMatrix.Zero(size)
     n1.gridColor = new N1.MathLib.BinaryMatrix.Zero(size)
     size = Number(size) + Number(1)
