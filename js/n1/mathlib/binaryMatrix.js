@@ -298,6 +298,8 @@
             tempColorRow.setElement(i + 1, 3)
           } else if ((rowOne.element(i + 1) === 2) && (rowTwo.element(i + 1) === 5)) {
             tempColorRow.setElement(i + 1, 5)
+          } else if ((rowOne.element(i + 1) === 3) && (rowTwo.element(i + 1) === 1)) {
+            tempColorRow.setElement(i + 1, 3)
           }
         }
         // console.log('temp color row is: ' + tempColorRow.view())
@@ -334,6 +336,8 @@
             tempColorColumn.setElement(i + 1, 3)
           } else if ((columnOne.element(i + 1) === 2) && (columnTwo.element(i + 1) === 5)) {
             tempColorColumn.setElement(i + 1, 5)
+          } else if ((columnOne.element(i + 1) === 3) && (columnTwo.element(i + 1) === 1)) {
+            tempColorColumn.setElement(i + 1, 3)
           }
         }
         // console.log('add column return is: ' + tempColorColumn.view())
@@ -372,14 +376,18 @@
       } else if (columnOne.elements.length !== columnTwo.elements.length) {
         return null
       } else {
-        var tempTextColumn = N1.MathLib.BinaryVector.Zero(columnOne.elements.length)
+        var tempTextColumn = N1.MathLib.BinaryVector.One(columnOne.elements.length)
         var i
         for (i = 0; i < columnOne.elements.length; i++) {
+        // console.log('columnOne.element(i + 1) is: ' + (columnOne.element(i + 1)))
+        // console.log('columnTwo.element(i + 1) is: ' + (columnTwo.element(i + 1)))
           tempTextColumn.setElement(i + 1, (columnOne.element(i + 1) + columnTwo.element(i + 1)))
           if (tempTextColumn.element(i + 1) > 1) {
             tempTextColumn.setElement(i + 1, 1)
           }
+        // console.log('tempTextColumn.element(i + 1) is: ' + (tempTextColumn.element(i + 1)))
         }
+        // console.log('temp text column is: ' + tempTextColumn.view())
         return tempTextColumn
       }
     }
