@@ -460,17 +460,9 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   tempColumnOneText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getColumn(rcOneIndex))
   tempColumnTwoText = N1.MathLib.BinaryVector.NewOne(n1.gridText.getColumn(rcTwoIndex))
   tempColumnOneText = n1.gridText.addTextColumns(tempColumnOneText, tempColumnTwoText)
-  // n1.gridText.setRow(rcOneIndex, tempRowOneText)
-  n1.gridText.setColumn(rcOneIndex, tempColumnOneText.elements) // working here
+  n1.gridText.setColumn(rcOneIndex, tempColumnOneText.elements)
   n1.gridText.setRow(rcOneIndex, tempRowOneText)
-  // get tempColumnOneText
-  // get tempColumnTwoText
-  // create from addTextColumns tempColumnOneText
-  // setRow tempColumnOneText
-
-  // console.log('same n1.gridText is: ' + n1.gridText.matrixView())
   n1.gridText = N1.MathLib.BinaryMatrix.NewOne(n1.gridText.deleteRowAndColumn(rcTwoIndex))
-  // console.log('same n1.gridText is: ' + n1.gridText.matrixView())
 
     // ############## draw code here ########
     // need to redraw the main canvas using text values

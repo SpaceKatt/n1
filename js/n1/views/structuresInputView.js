@@ -47,7 +47,7 @@
       var cellSize = 20
       var rcOne = n1.columnNumber
       var rcTwo = n1.rowNumber
-      // console.log($('#entries-equal').val())
+
       if($('#entries-equal').val() === 'N') {
         // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
         N1.MathLib.GridTools.enterData(rcOne, rcTwo, canvas, context, cellSize)
@@ -58,7 +58,6 @@
         N1.MathLib.GridTools.same(rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize)
         n1.size = n1.gridColor.elements.length
         n1.vectorGrid.push(rcOne)
-        // console.log('n1.gridColor.elements.length is: ' + n1.gridColor.elements.length)
         $('#display').css('heigth',(Number((n1.size * 20) + Number(40))))
         $('#display').css('width',(Number((n1.size * 20) + Number(40))))
         $('#canvas-main').prop('width', Number(n1.size * 20))
@@ -72,9 +71,7 @@
         $('#canvas-vector').prop('height', Number(20))
         this.$('#enter-swap').show()
         this.$('#enter-infer').show()
-        // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
         N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
-        // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
       }
     },
 
@@ -90,9 +87,7 @@
       var cellSize = 20
       var rcOne = n1.columnNumber
       var rcTwo = n1.rowNumber
-      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
       N1.MathLib.GridTools.swapRC(rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize)
-      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
     },
 
     enterInfer: function () {
@@ -103,9 +98,7 @@
       var canvas2 = $('#canvas-left-side').get(0)
       var context2 = canvas2.getContext('2d')
       var cellSize = 20
-      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
       N1.MathLib.GridTools.inferenceProcess(canvas, context, canvas1, context1, canvas2, context2, cellSize)
-      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
     }
   })
 }())
