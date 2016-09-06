@@ -1,4 +1,4 @@
-/* global suite, expect, N1, test, assert */
+/* global suite, N1, test, assert */
 suite('N1.MathLib.BinaryVector Factory methods', function () {
   test('Create new vector', function () {
     var elements = [1, 0, 0, 1, 1]
@@ -55,7 +55,7 @@ suite('N1.MathLib.BinaryVector Operation methods', function () {
   test('Vector view valid', function () {
     var elements = [0, 1, 0, 1]
     var vector = N1.MathLib.BinaryVector.NewOne(elements)
-    var vectorView = "[0, 1, 0, 1]"
+    var vectorView = '[0, 1, 0, 1]'
     assert.deepEqual(vector.view(), vectorView)
   })
 })

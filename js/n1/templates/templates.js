@@ -1,8 +1,6 @@
 /* global N1 */
 // Underscore Templates
 
-
-
 N1.Templates['template-structures-item'] =
   '<td class="structure-name">' +
   '  <div class="structure-title structure-view"><%= title %></div>' +

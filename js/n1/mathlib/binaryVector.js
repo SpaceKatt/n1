@@ -2,6 +2,10 @@
 ;(function () {
   'use strict'
   N1.MathLib.BinaryVector = function BinaryVector () {
+    this.getElements = function () {
+      return this.elements
+    }
+    
     this.setElements = function (newElements) {
       this.elements = (newElements.elements || newElements).slice()
 

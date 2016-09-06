@@ -46,7 +46,9 @@
       var canvas2 = $('#canvas-left-side').get(0)
       var context2 = canvas2.getContext('2d')
       var cellSize = 20
+      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
       N1.MathLib.GridTools.swapRC(1, 1, canvas, context, canvas1, context1, canvas2, context2, cellSize)
+      // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
       this.$('#structure-create').hide()
       this.$('#canvas-vector').hide()
       }

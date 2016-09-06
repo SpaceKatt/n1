@@ -49,26 +49,26 @@ body {
 
 #canvas-main {
     border: 2px solid black;
-    background-color: lightgrey;
+    background-color: black;
 }
 
 #canvas-bottom {
     border: 2px solid black;
-    background-color: lightgrey;
+    background-color: black;
     margin-left: 35px;
 
 }
 
 #canvas-vector {
     border: 2px solid black;
-    background-color: lightgrey;
+    background-color: black;
     margin-left: 35px;
 
 }
 
 #canvas-left-side {
 	border: 2px solid black;
-    background-color: lightgrey;
+    background-color: black;
     margin-left: 5px;
     top: 60px;
 }
