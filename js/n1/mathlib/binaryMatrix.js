@@ -1,4 +1,4 @@
-/*global N1, n1 */
+/*global N1 */
 (function () {
   'use strict'
   N1.MathLib.BinaryMatrix = function BinaryMatrix () {

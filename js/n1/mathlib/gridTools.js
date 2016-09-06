@@ -369,7 +369,7 @@
 // #########################################################################
 // #########################################################################
 
-N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) {
+N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas1, context1, canvas2, context2, cellSize) { // work this out...
   var tempRowOneColor
   var tempColumnOneColor
   var tempRowTwoColor
@@ -442,7 +442,7 @@ N1.MathLib.GridTools.same = function same (rcOne, rcTwo, canvas, context, canvas
   rcOneIndex = (n1.vNames.indexOf(rcOne))
   rcTwoIndex = (n1.vNames.indexOf(rcTwo))
   n1.vNames.deleteElement(rcTwoIndex)
-  // console.log('n1.gridColor is: ' + n1.gridColor.matrixView())
+  // n1.size = n1.vNames.elements.length // needed to control canvas size
   tempRowOneColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcOneIndex))
   tempRowTwoColor = N1.MathLib.BinaryVector.NewOne(n1.gridColor.getRow(rcTwoIndex))
   tempRowOneColor = n1.gridColor.addColorRows(tempRowOneColor, tempRowTwoColor)
