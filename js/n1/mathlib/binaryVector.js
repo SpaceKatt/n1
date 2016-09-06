@@ -1,5 +1,5 @@
 /*global N1 */
-(function () {
+;(function () {
   'use strict'
   N1.MathLib.BinaryVector = function BinaryVector () {
     this.setElements = function (newElements) {
@@ -10,9 +10,9 @@
     this.setElement = function (position, value) {
       /* Think about adding a value check 0 or 1 only */
       if (position < 1 || position > this.elements.length) {
-      /* eslint-disable */
-      console.log('Element out of range, please enter valid element.');
-      alert('Element out of range, please enter valid element.');
+        /* eslint-disable */
+        console.log('Element out of range, please enter valid element.')
+        alert('Element out of range, please enter valid element.')
       /* eslint-enable */
       } else {
         this.elements[position - 1] = value
@@ -29,7 +29,7 @@
       for (var i = 0; i < n; i++) {
         /* eslint-disable */
         if (index === null && this.elements[i] == valueWanted) {
-        /* eslint-enable */
+          /* eslint-enable */
           index = i + 1
         }
       }
@@ -38,7 +38,7 @@
     }
 
     this.deleteElement = function (element) {
-      if(element > -1) {
+      if (element > -1) {
         this.elements.splice((element - 1), 1)
       }
       return this.elements
